@@ -1,10 +1,9 @@
-import { Button } from "ui";
+import { FIFA23 } from "@bui/loaders";
 
 export default function Web() {
   return (
     <div>
-      <h1>Web</h1>
-      <Button />
+      <FIFA23 />
     </div>
   );
 }
