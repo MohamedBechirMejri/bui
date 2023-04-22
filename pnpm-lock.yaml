@@ -14,6 +14,7 @@ importers:
       tailwindcss: ^3.3.1
       tsup: ^6.7.0
       turbo: latest
+      typescript: ^5.0.4
     dependencies:
       react: 18.2.0
     devDependencies:
@@ -24,8 +25,9 @@ importers:
       postcss: 8.4.23
       prettier: 2.8.0
       tailwindcss: 3.3.1_postcss@8.4.23
-      tsup: 6.7.0_postcss@8.4.23
+      tsup: 6.7.0_ysxqmvwu3gtlor2giyp77j2bti
       turbo: 1.9.3
+      typescript: 5.0.4
 
   apps/docs:
     specifiers:
@@ -2784,7 +2786,7 @@ packages:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
     dev: false
 
-  /tsup/6.7.0_postcss@8.4.23:
+  /tsup/6.7.0_ysxqmvwu3gtlor2giyp77j2bti:
     resolution: {integrity: sha512-L3o8hGkaHnu5TdJns+mCqFsDBo83bJ44rlK7e6VdanIvpea4ArPcU3swWGsLVbXak1PqQx/V+SSmFPujBK+zEQ==}
     engines: {node: '>=14.18'}
     hasBin: true
@@ -2815,6 +2817,7 @@ packages:
       source-map: 0.8.0-beta.0
       sucrase: 3.32.0
       tree-kill: 1.2.2
+      typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -2905,6 +2908,12 @@ packages:
     resolution: {integrity: sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+
+  /typescript/5.0.4:
+    resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
+    engines: {node: '>=12.20'}
+    hasBin: true
+    dev: true
 
   /unbox-primitive/1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
