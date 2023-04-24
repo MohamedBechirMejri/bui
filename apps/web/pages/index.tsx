@@ -1,9 +1,9 @@
-import { FIFA23 } from "@bui/loaders";
+import { ComingUpNext } from "@bui/loaders";
 
 export default function Web() {
   return (
     <div>
-      <FIFA23 />
+      <ComingUpNext />
     </div>
   );
 }
