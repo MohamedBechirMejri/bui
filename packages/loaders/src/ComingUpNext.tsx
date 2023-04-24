@@ -1,17 +1,6 @@
 import { motion } from "framer-motion";
 
-export const ComingUpNext = ({
-  text = "Coming up next",
-  outerContainerStyle = {},
-  innerContainerStyle = {},
-  textContainerStyle = {},
-  textStyle = {},
-  topLineStyle = {},
-  topLineInnerStyle = {},
-  gradientBackgroundStyle = {},
-  bottomLineStyle = {},
-  bottomLineInnerStyle = {},
-}) => {
+export const ComingUpNext = ({ text = "Coming up next" }) => {
   return (
     // The outer div is the container for the animation
     <motion.div
@@ -128,7 +117,7 @@ export const ComingUpNext = ({
             exit={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.3, ease: "easeInOut", delay: 1 }}
           >
-            Coming up next
+            {text}
           </motion.strong>
         </motion.p>
         {/* bottom line */}
