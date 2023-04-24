@@ -1,3 +1,32 @@
+/**
+ * ComingUpNext.tsx
+ * @packageDocumentation
+ * @module ComingUpNext
+ * @category Components
+ *
+ * @param {string} text - The text to display.
+ * @returns {JSX.Element} - The ComingUpNext component.
+ *
+ * @example
+ *
+ * import LoaderWrapper, { ComingUpNext } from "@bui/loaders";
+ * import { useState } from "react";
+ *
+ * const App = () => {
+ * const [isLoading, setIsLoading] = useState(false);
+ *
+ * return (
+ *     <div>
+ *         <button onClick={() => setIsLoading(!isLoading)}>Toggle</button>
+ *         <LoaderWrapper isLoading={isLoading} loader={<ComingUpNext />} />
+ *     </div>
+ *       );
+ * };
+ *
+ * export default App;
+ *
+ */
+
 import { motion } from "framer-motion";
 
 export const ComingUpNext = ({ text = "Coming up next" }) => {
