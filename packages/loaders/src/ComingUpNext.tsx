@@ -34,7 +34,7 @@ export const ComingUpNext = ({ text = "Coming up next" }) => {
         animate={{ scaleY: 1 }}
         exit={{
           scaleY: 0,
-          transition: { duration: 0.7, ease: "easeInOut", delay: 0.75 },
+          transition: { duration: 0.7, ease: "easeInOut", delay: 0.3 },
         }}
         transition={{ duration: 0.7, ease: "easeInOut", delay: 0.5 }}
       >
@@ -114,7 +114,11 @@ export const ComingUpNext = ({ text = "Coming up next" }) => {
             style={{ display: "block" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
+            exit={{
+              opacity: 0,
+              y: -5,
+              transition: { duration: 0.3, delay: 0 },
+            }}
             transition={{ duration: 0.3, ease: "easeInOut", delay: 1 }}
           >
             {text}
