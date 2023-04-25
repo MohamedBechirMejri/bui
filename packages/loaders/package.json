@@ -24,5 +24,9 @@
     "eslint-config-custom": "workspace:*",
     "tailwind-config": "workspace:*",
     "tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "framer-motion": "^10.12.4",
+    "react": "^18.2.0"
   }
 }
