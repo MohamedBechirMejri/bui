@@ -26,7 +26,12 @@
     "tsconfig": "workspace:*"
   },
   "dependencies": {
+    "@react-three/drei": "^9.65.5",
+    "@react-three/fiber": "^8.12.2",
+    "@types/three": "^0.150.2",
     "framer-motion": "^10.12.4",
-    "react": "^18.2.0"
+    "lamina": "^1.1.23",
+    "react": "^18.2.0",
+    "three": "^0.151.3"
   }
 }
