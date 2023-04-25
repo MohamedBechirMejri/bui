@@ -1,2 +1,2 @@
 // components
-export * from "./Confetti";
+export * from "./YinYang";
