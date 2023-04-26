@@ -1,2 +1,2 @@
 // components
-export * from "./YinYang";
+export * from "./Glow";
