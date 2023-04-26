@@ -85,6 +85,7 @@ importers:
     specifiers:
       '@react-three/drei': ^9.65.5
       '@react-three/fiber': ^8.12.2
+      '@react-three/postprocessing': ^2.8.0
       '@types/three': ^0.150.2
       eslint-config-custom: workspace:*
       framer-motion: ^10.12.4
@@ -96,6 +97,7 @@ importers:
     dependencies:
       '@react-three/drei': 9.65.5_xmzfnhi7wkdj25vmy6td4xhkxe
       '@react-three/fiber': 8.12.2_jq7katflogmkkdoodqa4yhwlpi
+      '@react-three/postprocessing': 2.8.0_e3gyfvccvopviy7thvetyarpbu
       '@types/three': 0.150.2
       framer-motion: 10.12.4_sgv4m26tnl4echlq645clg5jc4
       lamina: 1.1.23_wnb4vp6xzppucd2dnsl7egw7ee
@@ -1032,6 +1034,22 @@ packages:
       suspend-react: 0.0.8_react@18.2.0
       three: 0.151.3
       zustand: 3.7.2_react@18.2.0
+    dev: false
+
+  /@react-three/postprocessing/2.8.0_e3gyfvccvopviy7thvetyarpbu:
+    resolution: {integrity: sha512-rQcKqq5UTtwlazijW2vtK6y/6a66fACPmhQVtkoLMns4cqOL0NtKfByqNP6YEzEd91odIp86T8UkhKUs0iqT7g==}
+    peerDependencies:
+      '@react-three/fiber': '>=7.0'
+      react: '>=17.0'
+      three: '>=0.136.0'
+    dependencies:
+      '@react-three/fiber': 8.12.2_jq7katflogmkkdoodqa4yhwlpi
+      postprocessing: 6.30.2_three@0.151.3
+      react: 18.2.0
+      react-merge-refs: 1.1.0
+      screen-space-reflections: 2.5.0_sofrvuaqkglosgh7c62oaqijnq
+      three: 0.151.3
+      three-stdlib: 2.21.9_three@0.151.3
     dev: false
 
   /@rushstack/eslint-patch/1.2.0:
@@ -3536,6 +3554,15 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /postprocessing/6.30.2_three@0.151.3:
+    resolution: {integrity: sha512-Vt77s5DkHyUOV4bmk10J46DHJLglBfIo9ARPI0o62UIAx9omANfuPJTKiLVoYlC1ApkV9y3ldBDipF3IldB7YA==}
+    engines: {node: '>= 0.13.2'}
+    peerDependencies:
+      three: '>= 0.138.0 < 0.152.0'
+    dependencies:
+      three: 0.151.3
+    dev: false
+
   /potpack/1.0.2:
     resolution: {integrity: sha512-choctRBIV9EMT9WGAZHn3V7t0Z2pMQyl0EZE6pFc/6ml3ssw7Dlf/oAOvFwjm1HVsqfQN8GfeFyJ+d8tRzqueQ==}
     dev: false
@@ -3794,6 +3821,16 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /screen-space-reflections/2.5.0_sofrvuaqkglosgh7c62oaqijnq:
+    resolution: {integrity: sha512-fWSDMhJS0xwD3LTxRRch7Lb9NzxsR66sCmtDmAA7i+OGnghUrBBsrha85ng7StnCBaLq/BKmZ97dLxWd1XgWdQ==}
+    peerDependencies:
+      postprocessing: '>=6.28.0'
+      three: '>=0.141.0'
+    dependencies:
+      postprocessing: 6.30.2_three@0.151.3
+      three: 0.151.3
     dev: false
 
   /semver/6.3.0:
