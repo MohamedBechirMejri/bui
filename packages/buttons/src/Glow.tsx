@@ -8,9 +8,12 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
   // @ts-ignore TODO: fix this
   const buttonHeight = buttonRef.current?.offsetHeight;
 
+  const cols = buttonWidth / 16;
+  const rows = buttonHeight / 16;
+
   const [mousePosition, setMousePosition] = useState({ x: -240000, y: 0 });
 
-  const handleOnMouseMove = (e: any) => {
+  const handleMouseMove = (e: any) => {
     const mouseX = e.pageX - e.target.offsetLeft;
     const mouseY = e.pageY - e.target.offsetTop;
 
@@ -19,9 +22,6 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
 
     setMousePosition({ x, y });
   };
-
-  const cols = buttonWidth / 16;
-  const rows = buttonHeight / 16;
 
   const shadows = [];
 
@@ -74,7 +74,7 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
         borderRadius: ".5rem",
         color: textColor,
       }}
-      onMouseMove={handleOnMouseMove}
+      onMouseMove={handleMouseMove}
       onMouseLeave={() => setMousePosition({ x: -24, y: -1 })}
       {...props}
     >
