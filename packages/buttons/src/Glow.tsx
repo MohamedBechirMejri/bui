@@ -71,7 +71,7 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
         padding: 0,
         overflow: "hidden",
         cursor: "pointer",
-        borderRadius: ".5rem",
+        borderRadius: "1.25rem",
         color: textColor,
       }}
       onMouseMove={handleMouseMove}
