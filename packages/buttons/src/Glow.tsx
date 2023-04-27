@@ -67,7 +67,6 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
         fontSize: "1rem",
         fontFamily: "sans-serif",
         position: "relative",
-        border: "none",
         padding: 0,
         overflow: "hidden",
         cursor: "pointer",
@@ -95,6 +94,21 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
       >
         {text}
       </motion.span>
+      <motion.span
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          display: "block",
+          zIndex: 2,
+          borderRadius: "inherit",
+        }}
+        initial={{ boxShadow: "0 0 0 0px #88888800 inset" }}
+        whileTap={{
+          boxShadow: ["0 0 0 3px #88888800 inset", "0 0 0 0px #888888 inset"],
+        }}
+        transition={{ duration: 0.5 }}
+      />
     </motion.div>
   );
 };
