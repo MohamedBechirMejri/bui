@@ -26,8 +26,8 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
   const shadows = [];
 
   // determine how many shadows to create
-  for (let i = 0; i < cols; i++) {
-    for (let j = 0; j < rows; j++) {
+  for (let i = 0; i <= cols; i++) {
+    for (let j = 0; j <= rows; j++) {
       shadows.push(
         <Shadow
           key={`s${i}-${j}`}
