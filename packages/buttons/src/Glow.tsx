@@ -8,7 +8,7 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
   // @ts-ignore TODO: fix this
   const buttonHeight = buttonRef.current?.offsetHeight;
 
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: -240000, y: 0 });
 
   const handleOnMouseMove = (e: any) => {
     const mouseX = e.pageX - e.target.offsetLeft;
