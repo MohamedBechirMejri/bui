@@ -33,6 +33,20 @@ export const Glow = ({ text = "Submit", ...props }) => {
           key={`s${i}-${j}`}
           left={i * (100 / cols)}
           top={j * (100 / rows)}
+          color={
+            // TODO: add more colors and make this customizable
+            // top left
+            i < cols / 2 && j < rows / 2
+              ? "#304EAE"
+              : // top right
+              i > cols / 2 && j < rows / 2
+              ? "#FF6D6D"
+              : // bottom right
+              i > cols / 2 && j > rows / 2
+              ? "#FFC107"
+              : // bottom left
+                "#00B74A"
+          }
           mousePosition={mousePosition}
         />
       );
@@ -54,6 +68,7 @@ export const Glow = ({ text = "Submit", ...props }) => {
         padding: 0,
         overflow: "hidden",
         cursor: "pointer",
+        borderRadius: ".5rem",
       }}
       onMouseMove={handleOnMouseMove}
       onMouseLeave={() => setMousePosition({ x: -24, y: -1 })}
@@ -65,13 +80,15 @@ export const Glow = ({ text = "Submit", ...props }) => {
           position: "absolute",
           width: "100%",
           height: "100%",
-          display: "block",
+          display: "flex",
           zIndex: 1,
           backgroundColor: "#ffffff33",
           backdropFilter: "blur(.5rem)",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        /
+        {text}
       </motion.span>
     </motion.div>
   );
@@ -80,10 +97,12 @@ export const Glow = ({ text = "Submit", ...props }) => {
 const Shadow = ({
   left,
   top,
+  color,
   mousePosition,
 }: {
   left: number;
   top: number;
+  color: string;
   mousePosition: { x: number; y: number };
 }) => {
   return (
@@ -97,13 +116,10 @@ const Shadow = ({
               position: "absolute",
               width: 16,
               height: 16,
-              backgroundColor: "#123",
               borderRadius: "2rem",
-              boxShadow: "0 0 1rem 0.5rem #321",
+              boxShadow: `0 0 1rem 0.5rem ${color}`,
               filter: "blur(1rem)",
-              // @ts-ignore TODO: fix this
               x: -50 + "%",
-              // @ts-ignore TODO: fix this
               y: -50 + "%",
               left: left + "%",
               top: top + "%",
