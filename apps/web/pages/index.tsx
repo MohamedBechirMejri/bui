@@ -7,7 +7,15 @@ export default function Web() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
       <Glow
         onClick={() => setIsLoading(!isLoading)}
         text={"Toggle"}
