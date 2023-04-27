@@ -19,7 +19,7 @@ export default function Web() {
       <Glow
         onClick={() => setIsLoading(!isLoading)}
         text={"Toggle"}
-        textColor="#000"
+        color={"#ffffff"}
       />
       <LoaderWrapper isLoading={isLoading} loader={<ComingUpNext />} />
     </div>

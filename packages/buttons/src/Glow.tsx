@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 
-export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
+export const Glow = ({ text = "Submit", color = "#ffffff", ...props }) => {
   const buttonRef = useRef(null);
   // @ts-ignore TODO: fix this
   const buttonWidth = buttonRef.current?.offsetWidth;
@@ -71,8 +71,13 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
         overflow: "hidden",
         cursor: "pointer",
         borderRadius: "1.25rem",
-        color: textColor,
         userSelect: "none",
+        color,
+      }}
+      initial={{ boxShadow: "0 0 .25rem 0px #14013d" }}
+      whileHover={{
+        boxShadow: "0 0 0rem 2px #14013d",
+        transition: { duration: 0.5 },
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setMousePosition({ x: -24, y: -1 })}
@@ -86,7 +91,7 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
           height: "100%",
           display: "flex",
           zIndex: 1,
-          backgroundColor: "#ffffff33",
+          backgroundColor: "#ffffff00",
           backdropFilter: "blur(.5rem)",
           alignItems: "center",
           justifyContent: "center",
