@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 
-export const Glow = ({ text = "Submit", ...props }) => {
+export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
   const buttonRef = useRef(null);
   // @ts-ignore TODO: fix this
   const buttonWidth = buttonRef.current?.offsetWidth;
@@ -64,11 +64,12 @@ export const Glow = ({ text = "Submit", ...props }) => {
         fontSize: "1rem",
         fontFamily: "sans-serif",
         position: "relative",
-        border: "solid 1px",
+        border: "none",
         padding: 0,
         overflow: "hidden",
         cursor: "pointer",
         borderRadius: ".5rem",
+        color: textColor,
       }}
       onMouseMove={handleOnMouseMove}
       onMouseLeave={() => setMousePosition({ x: -24, y: -1 })}

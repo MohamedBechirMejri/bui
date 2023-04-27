@@ -8,7 +8,11 @@ export default function Web() {
 
   return (
     <div>
-      <Glow onClick={() => setIsLoading(!isLoading)} text={"Toggle"} />
+      <Glow
+        onClick={() => setIsLoading(!isLoading)}
+        text={"Toggle"}
+        textColor="#000"
+      />
       <LoaderWrapper isLoading={isLoading} loader={<ComingUpNext />} />
     </div>
   );
