@@ -73,6 +73,7 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
         cursor: "pointer",
         borderRadius: "1.25rem",
         color: textColor,
+        userSelect: "none",
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setMousePosition({ x: -24, y: -1 })}
