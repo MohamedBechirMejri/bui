@@ -14,8 +14,8 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
   const [mousePosition, setMousePosition] = useState({ x: -240000, y: 0 });
 
   const handleMouseMove = (e: any) => {
-    const mouseX = e.pageX - e.target.offsetLeft;
-    const mouseY = e.pageY - e.target.offsetTop;
+    const mouseX = e.pageX - e.currentTarget.offsetLeft;
+    const mouseY = e.pageY - e.currentTarget.offsetTop;
 
     const x = (mouseX / buttonWidth) * 100;
     const y = (mouseY / buttonHeight) * 100;
