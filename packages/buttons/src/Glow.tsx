@@ -45,7 +45,10 @@ export const Glow = ({ text = "Submit", textColor = "#fff", ...props }) => {
               i > cols / 2 && j > rows / 2
               ? "#FFC107"
               : // bottom left
-                "#00B74A"
+              i < cols / 2 && j > rows / 2
+              ? "#00B74A"
+              : // fallback
+                "#888888"
           }
           mousePosition={mousePosition}
         />
