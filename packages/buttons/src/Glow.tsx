@@ -1,3 +1,44 @@
+/**
+ * Glow button
+ *
+ * @param {string} text - The text to display on the button
+ * @param {string} color - The color of the text
+ * @param {any} props - Any other props to pass to the button
+ * @returns {JSX.Element} - The glow button
+ * @example
+ *
+ * import { Glow } from "@bui/buttons";
+ *
+ * export default function Web() {
+ *  return (
+ *   <div
+ *    style={{
+ *    display: "flex",
+ *    flexDirection: "column",
+ *    alignItems: "center",
+ *    justifyContent: "center",
+ *    height: "100vh",
+ *        }}
+ *   >
+ *     <Glow
+ *      onClick={() => setIsLoading(!isLoading)}
+ *     text={"Toggle"}
+ *     color={"#ffffff"}
+ *    />
+ *   </div>
+ * );
+ * }
+ *
+ * @todo
+ *  - tweak colors
+ * - animate border
+ * - implememnt better customizability
+ * - add better glow on hover
+ * - add better click effect
+ * - refactor all code
+ * - reorganize elements (top div shouldn't have any event listeners, etc.)
+ */
+
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 
