@@ -43,6 +43,7 @@ export const ComingUpNext = ({ text = "Coming up next" }) => {
         backgroundColor: "#E28413",
         overflow: "hidden",
         borderRadius: 0,
+        userSelect: "none",
       }}
       initial={{ scaleY: 0 }}
       animate={{ scaleY: 1 }}
