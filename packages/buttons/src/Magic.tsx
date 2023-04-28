@@ -1,0 +1,142 @@
+/**
+ * MD3 Button
+ *
+ * @param {string} color - The color of the button
+ * @param {any} children - The text to display on the button
+ * @param {any} props - Any other props to pass to the button
+ * @returns {JSX.Element} - The MD3 button
+ * @example
+ *
+ * import { MD3 } from "@bui/buttons";
+ *
+ * export default function Web() {
+ *   return (
+ *    <div
+ *    style={{
+ *      display: "flex",
+ *      flexDirection: "column",
+ *      alignItems: "center",
+ *      justifyContent: "center",
+ *      height: "100vh",
+ *     }}
+ *   >
+ *    <MD3>Submit</MD3>
+ *   </div>
+ *  );
+ * }
+ *
+ * @todo
+ * - [ ] Add light version
+ */
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+
+export const Magic = ({
+  color = "#6D44F4",
+  children,
+  ...props
+}: {
+  color?: string;
+  children: React.ReactNode;
+}) => {
+  // const [isMouseDown, setIsMouseDown] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+
+  // const handleMouseDown = () => setIsMouseDown(true);
+  // const handleMouseUp = () => setIsMouseDown(false);
+
+  const handleMouseEnter = () => setIsHovering(true);
+  const handleMouseLeave = () => setIsHovering(false);
+
+  return (
+    <motion.button
+      style={{
+        color: "#ffffff",
+        padding: "1em 1.25em 1em 1em",
+        fontFamily: "'Open Sans', Roboto, sans-serif",
+        fontSize: "1rem",
+        fontWeight: "bold",
+        cursor: "pointer",
+        outline: "none",
+        position: "relative",
+        overflow: "hidden",
+        userSelect: "none",
+        borderRadius: "1000vw",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "between",
+        gap: "0.75em",
+      }}
+      initial={{
+        backgroundColor: "#1d1d1d",
+        scale: 1,
+        boxShadow: `0px 0px 120px  transparent, 0px 4px 12px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.1), inset 0px 1px 1px rgba(255, 255, 255, 0.04), 0 0 0 0px rgba(109, 68, 244, 0.4)`,
+      }}
+      whileHover={{
+        backgroundColor: color,
+        scale: 1.1,
+        boxShadow: `0 0 120px rgba(208, 173, 255, 0.4), 0 4px 12px rgba(0,0,0,0.005), 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.35), 0 0 0 3px rgba(109, 68, 244, 0.4)`,
+      }}
+      whileTap={{}}
+      transition={{ duration: 0.4 }}
+      // onMouseDown={handleMouseDown}
+      // onMouseUp={handleMouseUp}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      {...props}
+    >
+      <Stars isHovering={isHovering} />
+      <AnimatePresence>
+        {isHovering && (
+          <motion.span
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: "50%",
+              width: "60%",
+              height: "25%",
+              // background: `linear-gradient(90deg, #6e45f4, #ff00ff)`,
+              background: "#D3B3FF",
+              borderRadius: "1000vw",
+              filter: "blur(.75em)",
+            }}
+            initial={{ opacity: 0, scale: 0.5, x: "-50%" }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.3 }}
+          />
+        )}
+      </AnimatePresence>
+      <motion.p
+        animate={{
+          background: isHovering ? "#fff" : "#333",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        {children}
+      </motion.p>
+    </motion.button>
+  );
+};
+
+const Stars = ({ isHovering }: { isHovering: boolean }) => {
+  return (
+    <svg viewBox="0 0 24 26" style={{ width: "1.5rem", height: "1.25rem" }}>
+      <motion.path
+        animate={{ fill: isHovering ? "#bbb" : "#333" }}
+        d="M5.16515 2.62145L5.8075 0.999247C5.83876 0.919722 5.9154 0.866699 6.00112 0.866699C6.08683 0.866699 6.16347 0.919722 6.19473 0.999247L6.83708 2.62145L8.44145 3.27094C8.5201 3.30254 8.57254 3.38003 8.57254 3.4667C8.57254 3.55337 8.5201 3.63085 8.44145 3.66246L6.83708 4.31195L6.19473 5.93415C6.16347 6.0147 6.08683 6.0667 6.00112 6.0667C5.9154 6.0667 5.83876 6.0147 5.8075 5.93415L5.16515 4.31195L3.56078 3.66246C3.48112 3.63085 3.42969 3.55337 3.42969 3.4667C3.42969 3.38003 3.48112 3.30254 3.56078 3.27094L5.16515 2.62145Z"
+      />
+      <motion.path
+        initial={{ x: 4 }}
+        animate={{ fill: isHovering ? "#fff" : "#666" }}
+        d="M11.2362 9.43967C11.5502 9.30067 11.8015 9.05025 11.9405 8.73617L13.5494 5.11725C13.7169 4.74204 14.0887 4.5 14.5 4.5C14.9112 4.5 15.2839 4.74204 15.4506 5.11725L17.0603 8.73617C17.1985 9.05025 17.4497 9.3015 17.7638 9.43967L21.3827 11.0494C21.7579 11.2161 22 11.5887 22 12C22 12.4112 21.7579 12.7831 21.3827 12.9506L17.7638 14.5595C17.4497 14.6985 17.1993 14.9497 17.0603 15.2638L15.4506 18.8827C15.2839 19.2579 14.9112 19.5 14.5 19.5C14.0887 19.5 13.7169 19.2579 13.5494 18.8827L11.9405 15.2638C11.8015 14.9497 11.5502 14.6985 11.2362 14.5595L7.61725 12.9506C7.24204 12.7831 7 12.4112 7 12C7 11.5887 7.24204 11.2161 7.61725 11.0494L11.2362 9.43967Z"
+      />
+      <motion.path
+        animate={{ fill: isHovering ? "#ccc" : "#444" }}
+        d="M4.60728 19.392L5.67703 16.6875C5.72997 16.5541 5.85854 16.4666 6.00056 16.4666C6.14258 16.4666 6.27031 16.5541 6.32325 16.6875L7.39299 19.392L10.0678 20.4736C10.1997 20.5271 10.2863 20.6563 10.2863 20.7999C10.2863 20.9435 10.1997 21.0735 10.0678 21.1271L7.39299 22.2087L6.32325 24.9123C6.27031 25.0457 6.14258 25.1332 6.00056 25.1332C5.85854 25.1332 5.72997 25.0457 5.67703 24.9123L4.60728 22.2087L1.93333 21.1271C1.8014 21.0735 1.71484 20.9435 1.71484 20.7999C1.71484 20.6563 1.8014 20.5271 1.93333 20.4736L4.60728 19.392Z"
+      />
+    </svg>
+  );
+};
