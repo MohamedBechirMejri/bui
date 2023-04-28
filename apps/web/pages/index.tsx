@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import LoaderWrapper, { ComingUpNext } from "@bui/loaders";
-import { Glow } from "@bui/buttons";
+import { MD3 } from "@bui/buttons";
 
 export default function Web() {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,11 +17,7 @@ export default function Web() {
         backgroundColor: "#002",
       }}
     >
-      <Glow
-        onClick={() => setIsLoading(!isLoading)}
-        text={"Toggle"}
-        color={"#ffffff"}
-      />
+      <MD3 onClick={() => setIsLoading(!isLoading)}>Submit</MD3>
       <LoaderWrapper isLoading={isLoading} loader={<ComingUpNext />} />
     </div>
   );
