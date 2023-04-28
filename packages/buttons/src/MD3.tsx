@@ -25,6 +25,8 @@
  *  );
  * }
  *
+ * @todo
+ * - [ ] Add light version
  */
 
 import { AnimatePresence, motion } from "framer-motion";
