@@ -37,6 +37,7 @@
  * - add better click effect
  * - refactor all code
  * - reorganize elements (top div shouldn't have any event listeners, etc.)
+ * - add light mode
  */
 
 import { AnimatePresence, motion } from "framer-motion";
