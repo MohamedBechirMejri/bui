@@ -92,7 +92,7 @@ export const Magic = ({
         scale: 1.1,
         boxShadow: `0 0 120px #D0ADFF66, 0 4px 12px #00000001, 0 1px 2px #00000019, inset 0 1px 1px #FFFFFF59, 0 0 0 3px #6D44F466`,
       }}
-      whileTap={{ scale: 0.999 }}
+      whileTap={{ scale: 1.05, transition: { scale: { duration: 0.2 } } }}
       transition={{ duration: 0.4 }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
