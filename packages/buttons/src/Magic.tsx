@@ -73,7 +73,6 @@ export const Magic = ({
         fontWeight: "bold",
         cursor: "pointer",
         position: "relative",
-        overflow: "hidden",
         userSelect: "none",
         borderRadius: "1000vw",
         display: "flex",
@@ -101,23 +100,34 @@ export const Magic = ({
       <Stars isHovering={isHovering} />
       <AnimatePresence>
         {isHovering && (
-          <motion.span
+          <div
             style={{
+              overflow: "hidden",
               position: "absolute",
-              bottom: 0,
-              left: "50%",
-              width: "60%",
-              height: "25%",
-              // background: `linear-gradient(90deg, #6e45f4, #ff00ff)`,
-              background: "#D3B3FF",
-              borderRadius: "1000vw",
-              filter: "blur(.75em)",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
             }}
-            initial={{ opacity: 0, scale: 0.5, x: "-50%" }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.3 }}
-          />
+          >
+            <motion.span
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: "50%",
+                width: "60%",
+                height: "25%",
+                // background: `linear-gradient(90deg, #6e45f4, #ff00ff)`,
+                background: "#D3B3FF",
+                borderRadius: "1000vw",
+                filter: "blur(.75em)",
+              }}
+              initial={{ opacity: 0, scale: 0.5, x: "-50%" }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              transition={{ duration: 0.3 }}
+            />
+          </div>
         )}
       </AnimatePresence>
       <motion.p
@@ -172,6 +182,7 @@ export const Magic = ({
           />
         </motion.svg>
       )}
+      <Particles />
     </motion.button>
   );
 };
@@ -231,5 +242,31 @@ const Stars = ({ isHovering }: { isHovering: boolean }) => {
         d="M4.60728 19.392L5.67703 16.6875C5.72997 16.5541 5.85854 16.4666 6.00056 16.4666C6.14258 16.4666 6.27031 16.5541 6.32325 16.6875L7.39299 19.392L10.0678 20.4736C10.1997 20.5271 10.2863 20.6563 10.2863 20.7999C10.2863 20.9435 10.1997 21.0735 10.0678 21.1271L7.39299 22.2087L6.32325 24.9123C6.27031 25.0457 6.14258 25.1332 6.00056 25.1332C5.85854 25.1332 5.72997 25.0457 5.67703 24.9123L4.60728 22.2087L1.93333 21.1271C1.8014 21.0735 1.71484 20.9435 1.71484 20.7999C1.71484 20.6563 1.8014 20.5271 1.93333 20.4736L4.60728 19.392Z"
       />
     </svg>
+  );
+};
+
+const Particles = () => {
+  return (
+    <motion.svg
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        overflow: "visible",
+      }}
+      viewBox="0 0 1440 1024"
+    >
+      <motion.circle
+        cx="50"
+        cy="50"
+        r="20"
+        fill="#ffffff55"
+        initial={{ opacity: 1 }}
+        animate={{ y: -500 }}
+        transition={{ type: "spring", damping: 10, stiffness: 100 }}
+      ></motion.circle>
+    </motion.svg>
   );
 };
