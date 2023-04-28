@@ -30,7 +30,7 @@
  */
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const Magic = ({
   color = "#6D44F4",
@@ -40,25 +40,38 @@ export const Magic = ({
   color?: string;
   children: React.ReactNode;
 }) => {
-  // const [isMouseDown, setIsMouseDown] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
+  const ref = useRef<HTMLButtonElement>(null);
 
-  // const handleMouseDown = () => setIsMouseDown(true);
-  // const handleMouseUp = () => setIsMouseDown(false);
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
 
+  useEffect(() => {
+    if (ref.current) {
+      // @ts-ignore
+      const { width, height } = ref.current.getBoundingClientRect();
+      setWidth(width);
+      setHeight(height);
+    }
+  }, []);
+
   return (
     <motion.button
+      ref={ref}
       style={{
-        color: "#ffffff",
-        padding: "1em 1.25em 1em 1em",
+        appearance: "none",
+        outline: "none",
+        border: "none",
+        color: "#616161",
+        padding: "1em 2em 1em 1.25em",
         fontFamily: "'Open Sans', Roboto, sans-serif",
         fontSize: "1rem",
         fontWeight: "bold",
         cursor: "pointer",
-        outline: "none",
         position: "relative",
         overflow: "hidden",
         userSelect: "none",
@@ -67,6 +80,7 @@ export const Magic = ({
         alignItems: "center",
         justifyContent: "between",
         gap: "0.75em",
+        WebkitTapHighlightColor: "transparent",
       }}
       initial={{
         backgroundColor: "#1d1d1d",
@@ -80,8 +94,6 @@ export const Magic = ({
       }}
       whileTap={{ scale: 0.999 }}
       transition={{ duration: 0.4 }}
-      // onMouseDown={handleMouseDown}
-      // onMouseUp={handleMouseUp}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...props}
@@ -117,6 +129,49 @@ export const Magic = ({
       >
         {children}
       </motion.p>
+      {isHovering && (
+        <motion.svg
+          viewBox={`0 0 ${width} ${height}`}
+          style={{
+            display: "block",
+            overflow: "visible",
+            pointerEvents: "none",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            fill: "transparent",
+            strokeWidth: "3px",
+            strokeDasharray: "1.5 14",
+          }}
+          initial={{ opacity: 0, strokeDashoffset: 22, stroke: "#E2D9FF" }}
+          animate={{
+            opacity: 1,
+            strokeDashoffset: 6,
+            stroke: ["#E2D9FF00", "#E2D9FF", "#E2D9FF00"],
+          }}
+          transition={{ duration: 2, ease: "linear", repeat: Infinity }}
+        >
+          <motion.rect
+            width="100%"
+            height="100%"
+            pathLength={10}
+            x={0}
+            y={0}
+            rx={"28px"}
+            ry={"28px"}
+            filter="blur(3px)"
+          />
+          <motion.rect
+            width="100%"
+            height="100%"
+            pathLength={10}
+            x={0}
+            y={0}
+            rx={"28px"}
+            ry={"28px"}
+          />
+        </motion.svg>
+      )}
     </motion.button>
   );
 };
