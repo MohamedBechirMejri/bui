@@ -71,12 +71,12 @@ export const Magic = ({
       initial={{
         backgroundColor: "#1d1d1d",
         scale: 1,
-        boxShadow: `0px 0px 120px  transparent, 0px 4px 12px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.1), inset 0px 1px 1px rgba(255, 255, 255, 0.04), 0 0 0 0px rgba(109, 68, 244, 0.4)`,
+        boxShadow: `0px 0px 120px  transparent, 0px 4px 12px #0000000D, 0px 1px 2px #00000019, inset 0px 1px 1px #ffffff0A, 0 0 0 0px #6D44F466`,
       }}
       whileHover={{
         backgroundColor: color,
         scale: 1.1,
-        boxShadow: `0 0 120px rgba(208, 173, 255, 0.4), 0 4px 12px rgba(0,0,0,0.005), 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.35), 0 0 0 3px rgba(109, 68, 244, 0.4)`,
+        boxShadow: `0 0 120px #D0ADFF66, 0 4px 12px #00000001, 0 1px 2px #00000019, inset 0 1px 1px #FFFFFF59, 0 0 0 3px #6D44F466`,
       }}
       whileTap={{ scale: 0.999 }}
       transition={{ duration: 0.4 }}
