@@ -14,6 +14,7 @@ export default function Web() {
         alignItems: "center",
         justifyContent: "center",
         height: "100vh",
+        backgroundColor: "#002",
       }}
     >
       <Glow
