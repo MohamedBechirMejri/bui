@@ -33,8 +33,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 export const Magic = ({
-  color = "#6D44F4",
   children,
+  color = "#6D44F4",
   ...props
 }: {
   color?: string;
@@ -182,7 +182,9 @@ export const Magic = ({
           />
         </motion.svg>
       )}
-      <Particles />
+      {isHovering && (
+        <Particles isHovering={isHovering} width={width} height={height} />
+      )}
     </motion.button>
   );
 };
@@ -245,7 +247,15 @@ const Stars = ({ isHovering }: { isHovering: boolean }) => {
   );
 };
 
-const Particles = () => {
+const Particles = ({
+  isHovering,
+  width,
+  height,
+}: {
+  isHovering: boolean;
+  width: number;
+  height: number;
+}) => {
   return (
     <motion.svg
       style={{
@@ -259,13 +269,17 @@ const Particles = () => {
       viewBox="0 0 1440 1024"
     >
       <motion.circle
-        cx="50"
-        cy="50"
+        cx="0"
+        cy="0"
         r="20"
         fill="#ffffff55"
-        initial={{ opacity: 1 }}
-        animate={{ y: -500 }}
-        transition={{ type: "spring", damping: 10, stiffness: 100 }}
+        initial={{}}
+        animate={{}}
+        transition={{
+          ease: "easeInOut",
+          delay: 0.5,
+          duration: 5,
+        }}
       ></motion.circle>
     </motion.svg>
   );
