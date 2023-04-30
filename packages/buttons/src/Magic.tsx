@@ -84,14 +84,14 @@ export const Magic = ({
       initial={{
         backgroundColor: "#1d1d1d",
         scale: 1,
-        boxShadow: `0px 0px 120px  transparent, 0px 4px 12px #0000000D, 0px 1px 2px #00000019, inset 0px 1px 1px #ffffff0A, 0 0 0 0px #6D44F466`,
+        boxShadow: `0px 0px 120px  transparent, 0px 4px 12px #0000000D, 0px 1px 2px #00000019, inset 0px 1px 1px #ffffff0A, 0 0 0 0px #6D44F466, 0 0 20px 20px #6D44F400`,
       }}
       whileHover={{
         backgroundColor: color,
         scale: 1.1,
-        boxShadow: `0 0 120px #D0ADFF66, 0 4px 12px #00000001, 0 1px 2px #00000019, inset 0 1px 1px #FFFFFF59, 0 0 0 3px #6D44F466`,
+        boxShadow: `0 0 120px #D0ADFF66, 0 4px 12px #00000001, 0 1px 2px #00000019, inset 0 1px 1px #FFFFFF59, 0 0 0 3px #6D44F466, 0 0 40px 40px #6D44F466`,
       }}
-      whileTap={{ scale: 1.05, transition: { scale: { duration: 0.2 } } }}
+      whileTap={{ scale: 1.05, transition: { scale: { duration: 0.4 } } }}
       transition={{ duration: 0.4 }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
