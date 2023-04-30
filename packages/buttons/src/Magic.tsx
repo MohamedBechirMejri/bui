@@ -96,6 +96,7 @@ export const Magic = ({
         scale: 1.1,
         boxShadow: `0 0 120px #D0ADFF66, 0 4px 12px #00000001, 0 1px 2px #00000019, inset 0 1px 1px #FFFFFF59, 0 0 0 3px #6D44F466, 0 0 40px 40px #6D44F466`,
       }}
+      layout
       whileTap={{ scale: 1.05, transition: { scale: { duration: 0.4 } } }}
       transition={{ duration: 0.4 }}
       onMouseEnter={handleMouseEnter}
@@ -139,7 +140,7 @@ export const Magic = ({
         animate={{
           background: isHovering ? "#fff" : "#333",
           WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          WebkitTextFillColor: "#ffffff00",
         }}
       >
         {children}
