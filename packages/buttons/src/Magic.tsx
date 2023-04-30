@@ -182,9 +182,11 @@ export const Magic = ({
           />
         </motion.svg>
       )}
-      {!isHovering && (
-        <Particles isHovering={isHovering} width={width} height={height} />
-      )}
+      <AnimatePresence>
+        {isHovering && (
+          <Particles color={color} width={width} height={height} />
+        )}
+      </AnimatePresence>
     </motion.button>
   );
 };
@@ -248,20 +250,20 @@ const Stars = ({ isHovering }: { isHovering: boolean }) => {
 };
 
 const Particles = ({
-  isHovering,
+  color,
   width,
   height,
 }: {
-  isHovering: boolean;
+  color: string;
   width: number;
   height: number;
 }) => {
   const randomX = (i: number) =>
     i % 2 === 0
-      ? Math.floor(Math.random() * width) - width
-      : Math.floor(Math.random() * width) + width / 2;
+      ? Math.floor(Math.random() * width) - width / 2
+      : Math.floor(Math.random() * width) + width / 2 / 2;
 
-  const randomY = () => Math.floor(Math.random() * (height * 2)) - height * 2;
+  const randomY = () => Math.floor(Math.random() * (height * 2)) - height;
 
   return (
     <motion.svg
@@ -279,35 +281,41 @@ const Particles = ({
         const x = randomX(i);
         const y = randomY();
 
-        const randomAngle = () => Math.random() * Math.PI; // a random angle between 0 and 180 degrees
+        const randomAngle = () => (Math.random() * Math.PI) / 4 - Math.PI / 8; // a random angle between -22.5 and 22.5 degrees
         const angle = randomAngle(); // assign a random angle to each particle
+        const direction = i % 2 === 0 ? -1 : 1; // assign a direction to each particle based on its index
+        const duration = Math.random() * 2 + 3; // a random duration between 3 and 5 seconds
+        const radiusX = 100; // pixels
+        const radiusY = 500; // pixels
 
         return (
           <motion.circle
             r="20"
-            fill="#ffffff55"
-            initial={{
-              cx: `${x}%`,
-              cy: `${y}%`,
-            }}
+            fill={color}
+            key={"particle" + i}
+            style={{ filter: "blur(20px)" }}
             animate={{
               cx: [
                 `${x}%`,
-                `${x + Math.cos(angle) * 100}%`,
-                `${x + Math.cos(angle + Math.PI) * 100}%`,
-              ], // start from x, then move to x + radius * cos(angle), then move to x + radius * cos(angle + 180)
+                `${x + Math.cos(angle) * direction * radiusX}%`,
+                `${x + Math.cos(angle + Math.PI) * direction * radiusX}%`,
+              ],
               cy: [
                 `${y}%`,
-                `${y + Math.sin(angle) * 100}%`,
-                `${y + Math.sin(angle + Math.PI) * 100}%`,
-              ], // start from y, then move to y + radius * sin(angle), then move to y + radius * sin(angle + 180)
+                `${y + Math.sin(angle * direction) * radiusY}%`,
+                `${y + Math.sin((angle + Math.PI) * direction) * radiusY}%`,
+              ],
+              opacity: [0, 1, 0],
             }}
+            exit={{ opacity: 0, transition: { duration: 0.1 } }}
             transition={{
               ease: "easeInOut",
-              delay: 0.5,
-              duration: 5,
+              delay: (0.3 * i) / 5,
+              duration,
+              repeat: Infinity,
+              repeatType: "reverse",
             }}
-          ></motion.circle>
+          />
         );
       })}
     </motion.svg>
