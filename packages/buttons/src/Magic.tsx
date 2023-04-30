@@ -261,8 +261,7 @@ const Particles = ({
       ? Math.floor(Math.random() * width) - width
       : Math.floor(Math.random() * width) + width / 2;
 
-  const randomY = () =>
-    Math.floor(Math.random() * (height * 2)) - height * 2;
+  const randomY = () => Math.floor(Math.random() * (height * 2)) - height * 2;
 
   return (
     <motion.svg
@@ -276,23 +275,41 @@ const Particles = ({
       }}
       viewBox="0 0 1440 1024"
     >
-      {Array.from({ length: 100 }).map((_, i) => (
-        <motion.circle
-          cx={`${randomX(i)}%`}
-          cy={`${randomY()}%`}
-          r="20"
-          fill="#ffffff55"
-          initial={{}}
-          animate={{}}
-          transition={{
-            ease: "easeInOut",
-            delay: 0.5,
-            duration: 5,
-          }}
-        >
-          {randomX(i)}
-        </motion.circle>
-      ))}
+      {Array.from({ length: 100 }).map((_, i) => {
+        const x = randomX(i);
+        const y = randomY();
+
+        const randomAngle = () => Math.random() * Math.PI; // a random angle between 0 and 180 degrees
+        const angle = randomAngle(); // assign a random angle to each particle
+
+        return (
+          <motion.circle
+            r="20"
+            fill="#ffffff55"
+            initial={{
+              cx: `${x}%`,
+              cy: `${y}%`,
+            }}
+            animate={{
+              cx: [
+                `${x}%`,
+                `${x + Math.cos(angle) * 100}%`,
+                `${x + Math.cos(angle + Math.PI) * 100}%`,
+              ], // start from x, then move to x + radius * cos(angle), then move to x + radius * cos(angle + 180)
+              cy: [
+                `${y}%`,
+                `${y + Math.sin(angle) * 100}%`,
+                `${y + Math.sin(angle + Math.PI) * 100}%`,
+              ], // start from y, then move to y + radius * sin(angle), then move to y + radius * sin(angle + 180)
+            }}
+            transition={{
+              ease: "easeInOut",
+              delay: 0.5,
+              duration: 5,
+            }}
+          ></motion.circle>
+        );
+      })}
     </motion.svg>
   );
 };
