@@ -46,6 +46,7 @@ export const Magic = ({
   const [height, setHeight] = useState(0);
 
   const [isHovering, setIsHovering] = useState(false);
+  const [particles, setParticles] = useState<any[]>([]);
 
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
@@ -56,6 +57,10 @@ export const Magic = ({
       const { width, height } = ref.current.getBoundingClientRect();
       setWidth(width);
       setHeight(height);
+
+      // Get the particles from the useParticles hook
+      const particles = useParticles(color, width, height);
+      setParticles(particles);
     }
   }, []);
 
@@ -182,12 +187,7 @@ export const Magic = ({
           />
         </motion.svg>
       )}
-      <Particles
-        isHovering={isHovering}
-        color={color}
-        width={width}
-        height={height}
-      />
+      <Particles isHovering={isHovering} particles={particles} />
     </motion.button>
   );
 };
@@ -250,24 +250,16 @@ const Stars = ({ isHovering }: { isHovering: boolean }) => {
   );
 };
 
+// Custom Hooks
+
+// The Particles component that renders the particles using the useParticles hook
 const Particles = ({
+  particles,
   isHovering,
-  color,
-  width,
-  height,
 }: {
+  particles: any;
   isHovering: boolean;
-  color: string;
-  width: number;
-  height: number;
 }) => {
-  const randomX = (i: number) =>
-    i % 2 === 0
-      ? Math.floor(Math.random() * width) - width / 2
-      : Math.floor(Math.random() * width) + width / 2 / 2;
-
-  const randomY = () => Math.floor(Math.random() * (height * 2)) - height;
-
   return (
     <motion.svg
       style={{
@@ -280,47 +272,67 @@ const Particles = ({
       }}
       viewBox="0 0 1440 1024"
     >
-      {Array.from({ length: 60 }).map((_, i) => {
-        const x = randomX(i);
-        const y = randomY();
-
-        const randomAngle = () => (Math.random() * Math.PI) / 4 - Math.PI / 8; // a random angle between -22.5 and 22.5 degrees
-        const angle = randomAngle(); // assign a random angle to each particle
-        const direction = i % 2 === 0 ? -1 : 1; // assign a direction to each particle based on its index
-        const duration = Math.random() * 2 + 3; // a random duration between 3 and 5 seconds
-        const radiusX = 100; // pixels
-        const radiusY = 500; // pixels
-
-        return !isHovering ? null : (
-          <motion.circle
-            r="20"
-            fill={color}
-            // style={{ filter: "blur(20px)" }}
-            animate={{
-              cx: [
-                `${x}%`,
-                `${x + Math.cos(angle) * direction * radiusX}%`,
-                `${x + Math.cos(angle + Math.PI) * direction * radiusX}%`,
-              ],
-              cy: [
-                `${y}%`,
-                `${y + Math.sin(angle * direction) * radiusY}%`,
-                `${y + Math.sin((angle + Math.PI) * direction) * radiusY}%`,
-              ],
-              opacity: [0, 1, 0],
-            }}
-            exit={{ opacity: 0, transition: { duration: 0.3 } }}
-            transition={{
-              ease: "easeInOut",
-              delay: (0.3 * i) / 5,
-              duration,
-              repeat: Infinity,
-              // repeatType: "reverse",
-              repeatDelay: (0.3 * 50) / 5,
-            }}
-          />
-        );
-      })}
+      {particles.map((particleProps: any, i: number) => (
+        <AnimatePresence>
+          {!isHovering ? null : <motion.circle key={i} {...particleProps} />}
+        </AnimatePresence>
+      ))}
     </motion.svg>
   );
+};
+
+const useRandom = (min: number, max: number) =>
+  Math.random() * (max - min) + min;
+
+// A custom hook that returns an array of particles with their initial and animate props
+const useParticles = (color: string, width: number, height: number) => {
+  //  A function that returns a random x coordinate for a particle based on index
+  const randomX = (i: number) =>
+    i % 2 === 0
+      ? useRandom(-width / 2, width / 2)
+      : useRandom(width / 2 / 2, width + width / 2 / 2);
+
+  // A function that returns a random y coordinate for a particle
+  const randomY = () => useRandom(-height, height);
+
+  // An array of particles with their initial and animate props
+  const particles = Array.from({ length: 60 }).map((_, i) => {
+    const x = randomX(i);
+    const y = randomY();
+
+    const angle = useRandom(-Math.PI / 8, Math.PI / 8); // a random angle between -22.5 and 22.5 degrees
+    const direction = i % 2 === 0 ? -1 : 1; // a direction based on the index
+    const duration = useRandom(3, 5); // a random duration between 3 and 5 seconds
+    const radiusX = 100; // pixels
+    const radiusY = 500; // pixels
+
+    return {
+      r: "20",
+      fill: color,
+      initial: { cx: `${x}%`, cy: `${y}%` },
+      animate: {
+        cx: [
+          `${x}%`,
+          `${x + Math.cos(angle) * direction * radiusX}%`,
+          `${x + Math.cos(angle + Math.PI) * direction * radiusX}%`,
+        ],
+        cy: [
+          `${y}%`,
+          `${y + Math.sin(angle * direction) * radiusY}%`,
+          `${y + Math.sin((angle + Math.PI) * direction) * radiusY}%`,
+        ],
+        opacity: [0, 1, 0],
+      },
+      exit: { opacity: 0, transition: { duration: 0.3 } },
+      transition: {
+        ease: "easeInOut",
+        delay: (0.3 * i) / 5,
+        duration,
+        repeat: Infinity,
+        repeatDelay: (0.3 * 50) / 5,
+      },
+    };
+  });
+
+  return particles;
 };
