@@ -1,32 +1,16 @@
 /**
- * MD3 Button
+ * Magic Button
  *
- * @param {string} color - The color of the button
- * @param {any} children - The text to display on the button
- * @param {any} props - Any other props to pass to the button
- * @returns {JSX.Element} - The MD3 button
+ * @description
+ * A component that renders a button with a magic effect and particles.
+ *
+ * @param {string} [props.color="#6D44F4"] - The color of the button and the particles.
+ * @param {React.ReactNode} props.children - The content of the button.
+ * @returns {JSX.Element} The Magic component.
+ *
  * @example
+ * <Magic>Generate Site</Magic>
  *
- * import { MD3 } from "@bui/buttons";
- *
- * export default function Web() {
- *   return (
- *    <div
- *    style={{
- *      display: "flex",
- *      flexDirection: "column",
- *      alignItems: "center",
- *      justifyContent: "center",
- *      height: "100vh",
- *     }}
- *   >
- *    <MD3>Submit</MD3>
- *   </div>
- *  );
- * }
- *
- * @todo
- * - [ ] Add light version
  */
 
 import { AnimatePresence, motion } from "framer-motion";
