@@ -182,11 +182,12 @@ export const Magic = ({
           />
         </motion.svg>
       )}
-      <AnimatePresence>
-        {isHovering && (
-          <Particles color={color} width={width} height={height} />
-        )}
-      </AnimatePresence>
+      <Particles
+        isHovering={isHovering}
+        color={color}
+        width={width}
+        height={height}
+      />
     </motion.button>
   );
 };
@@ -250,10 +251,12 @@ const Stars = ({ isHovering }: { isHovering: boolean }) => {
 };
 
 const Particles = ({
+  isHovering,
   color,
   width,
   height,
 }: {
+  isHovering: boolean;
   color: string;
   width: number;
   height: number;
@@ -288,13 +291,11 @@ const Particles = ({
         const radiusX = 100; // pixels
         const radiusY = 500; // pixels
 
-        return (
+        return !isHovering ? null : (
           <motion.circle
             r="20"
             fill={color}
-            key={"particle" + i}
-            style={{ filter: "blur(20px)" }}
-            initial={{ cx: `${x}%`, cy: `${y}%`, opacity: 0 }}
+            // style={{ filter: "blur(20px)" }}
             animate={{
               cx: [
                 `${x}%`,
@@ -308,7 +309,7 @@ const Particles = ({
               ],
               opacity: [0, 1, 0],
             }}
-            exit={{ opacity: 0, transition: { duration: 0.1 } }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
             transition={{
               ease: "easeInOut",
               delay: (0.3 * i) / 5,
