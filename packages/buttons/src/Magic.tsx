@@ -309,7 +309,6 @@ const useParticles = (color: string, width: number, height: number) => {
     return {
       r: "20",
       fill: color,
-      initial: { cx: `${x}%`, cy: `${y}%` },
       animate: {
         cx: [
           `${x}%`,
