@@ -182,7 +182,7 @@ export const Magic = ({
           />
         </motion.svg>
       )}
-      {isHovering && (
+      {!isHovering && (
         <Particles isHovering={isHovering} width={width} height={height} />
       )}
     </motion.button>
@@ -256,6 +256,14 @@ const Particles = ({
   width: number;
   height: number;
 }) => {
+  const randomX = (i: number) =>
+    i % 2 === 0
+      ? Math.floor(Math.random() * width) - width
+      : Math.floor(Math.random() * width) + width / 2;
+
+  const randomY = () =>
+    Math.floor(Math.random() * (height * 2)) - height * 2;
+
   return (
     <motion.svg
       style={{
@@ -268,19 +276,23 @@ const Particles = ({
       }}
       viewBox="0 0 1440 1024"
     >
-      <motion.circle
-        cx="0"
-        cy="0"
-        r="20"
-        fill="#ffffff55"
-        initial={{}}
-        animate={{}}
-        transition={{
-          ease: "easeInOut",
-          delay: 0.5,
-          duration: 5,
-        }}
-      ></motion.circle>
+      {Array.from({ length: 100 }).map((_, i) => (
+        <motion.circle
+          cx={`${randomX(i)}%`}
+          cy={`${randomY()}%`}
+          r="20"
+          fill="#ffffff55"
+          initial={{}}
+          animate={{}}
+          transition={{
+            ease: "easeInOut",
+            delay: 0.5,
+            duration: 5,
+          }}
+        >
+          {randomX(i)}
+        </motion.circle>
+      ))}
     </motion.svg>
   );
 };
