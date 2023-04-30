@@ -277,7 +277,7 @@ const Particles = ({
       }}
       viewBox="0 0 1440 1024"
     >
-      {Array.from({ length: 100 }).map((_, i) => {
+      {Array.from({ length: 60 }).map((_, i) => {
         const x = randomX(i);
         const y = randomY();
 
@@ -294,6 +294,7 @@ const Particles = ({
             fill={color}
             key={"particle" + i}
             style={{ filter: "blur(20px)" }}
+            initial={{ cx: `${x}%`, cy: `${y}%`, opacity: 0 }}
             animate={{
               cx: [
                 `${x}%`,
@@ -313,7 +314,8 @@ const Particles = ({
               delay: (0.3 * i) / 5,
               duration,
               repeat: Infinity,
-              repeatType: "reverse",
+              // repeatType: "reverse",
+              repeatDelay: (0.3 * 50) / 5,
             }}
           />
         );
