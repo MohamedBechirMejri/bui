@@ -21,18 +21,19 @@
     "./styles.css": "./dist/index.css"
   },
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
-    "tailwind-config": "workspace:*",
-    "tsconfig": "workspace:*"
+    "eslint-config-custom": "workspace:0.0.0",
+    "tsconfig": "workspace:0.0.0"
   },
   "dependencies": {
-    "@react-three/drei": "^9.65.5",
-    "@react-three/fiber": "^8.12.2",
-    "@react-three/postprocessing": "^2.8.0",
+    "@react-three/drei": "^9.66.1",
+    "@react-three/fiber": "^8.13.0",
+    "@react-three/postprocessing": "^2.9.2",
     "@types/three": "^0.150.2",
-    "framer-motion": "^10.12.4",
+    "framer-motion": "^10.12.6",
+    "framer-motion-3d": "^10.12.6",
     "lamina": "^1.1.23",
     "react": "^18.2.0",
+    "react-use-measure": "^2.1.1",
     "three": "^0.151.3"
   }
 }
