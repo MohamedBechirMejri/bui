@@ -8,17 +8,14 @@ const useRipples = (color: string) => {
   const [height, setHeight] = useState(0);
 
   // Callback ref to access the button element
-  const ref = useCallback(
-    (node: { getBoundingClientRect: () => { width: any; height: any } }) => {
-      if (node) {
-        // @ts-ignore
-        const { width, height } = node.getBoundingClientRect();
-        setWidth(width);
-        setHeight(height);
-      }
-    },
-    []
-  );
+  const ref = useCallback((node: HTMLDivElement | null) => {
+    if (node) {
+      // @ts-ignore
+      const { width, height } = node.getBoundingClientRect();
+      setWidth(width);
+      setHeight(height);
+    }
+  }, []);
 
   // Function to create a new ripple
   const createRipple = () =>
