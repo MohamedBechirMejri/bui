@@ -1,35 +1,25 @@
-import { Suspense, useEffect, useRef, useState } from "react";
-import {
-  useSpring,
-  useTransform,
-  motion,
-  MotionConfig,
-  useMotionValue,
-  AnimatePresence,
-} from "framer-motion";
-import useMeasure from "react-use-measure";
-import { motion as motion3d } from "framer-motion-3d";
-import { Canvas } from "@react-three/fiber";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export const Ripple = ({
   children,
-  color = "#2882fc",
+  color = "#6633fe",
   ...props
 }: {
   color?: string;
   children: React.ReactNode;
 }) => {
-  const transition = { type: "spring", duration: 0.7, bounce: 0.2 };
-
   const ref = useRef<HTMLButtonElement>(null);
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
+  const [ripples, setRipples] = useState<React.ReactNode[]>([]);
 
-  const [isHovering, setIsHovering] = useState(false);
-
-  const handleMouseEnter = () => setIsHovering(true);
-  const handleMouseLeave = () => setIsHovering(false);
+  const handleMouseDown = () =>
+    setRipples([
+      ...ripples,
+      <RippleEffect width={width} height={height} color={color} />,
+    ]);
 
   useEffect(() => {
     if (ref.current) {
@@ -41,40 +31,112 @@ export const Ripple = ({
   }, []);
 
   return (
-    <MotionConfig transition={transition}>
-      <motion.button
+    <motion.button
+      style={{
+        appearance: "none",
+        outline: "none",
+        color: "#fff",
+        fontFamily: "'Open Sans', Roboto, sans-serif",
+        fontSize: "1rem",
+        width: "max-content",
+        height: "max-content",
+        fontWeight: "bold",
+        cursor: "pointer",
+        position: "relative",
+        userSelect: "none",
+        borderRadius: "400px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        WebkitTapHighlightColor: "transparent",
+      }}
+      onMouseDown={handleMouseDown}
+    >
+      {ripples}
+      <motion.div
         ref={ref}
         style={{
-          appearance: "none",
-          outline: "none",
-          color: "#fff",
+          position: "absolute",
+          top: 0,
+          left: 0,
           padding: "1em 2em",
-          fontFamily: "'Open Sans', Roboto, sans-serif",
-          fontSize: "1rem",
-          fontWeight: "bold",
-          cursor: "pointer",
-          position: "relative",
-          userSelect: "none",
-          borderRadius: "400px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "between",
-          gap: "0.75em",
-          WebkitTapHighlightColor: "transparent",
+          width: "max-content",
+          height: "max-content",
           border: `3px solid ${color}`,
+          borderRadius: "inherit",
+          outline: "none",
+          backdropFilter: "blur(10px)",
+          x: "-50%",
+          y: "-50%",
+          textShadow: `0 0 20px ${color}`,
         }}
         initial={{ backgroundColor: color + "22" }}
         whileHover={{ backgroundColor: color + "44" }}
-        layout
         whileTap={{ backgroundColor: color + "66" }}
         transition={{ duration: 0.2 }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        layout
         {...props}
       >
         <motion.p>{children}</motion.p>
-        <AnimatePresence></AnimatePresence>
-      </motion.button>
-    </MotionConfig>
+      </motion.div>
+    </motion.button>
+  );
+};
+
+const RippleEffect = ({
+  width,
+  height,
+  color,
+}: {
+  width: number;
+  height: number;
+  color: string;
+}) => {
+  return (
+    <motion.svg
+      viewBox={`0 0 ${width} ${height}`}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width,
+        height,
+        borderRadius: "inherit",
+        backdropFilter: "blur(10px)",
+        x: "-50%",
+        y: "-50%",
+        overflow: "visible",
+        pointerEvents: "none",
+        strokeWidth: "3px",
+      }}
+      animate={{
+        scale: [1, 2],
+        opacity: [1, 0],
+        fill: [color + "44", color + "00"],
+        stroke: [color + "22", color + "66"],
+      }}
+      transition={{ duration: 2, ease: "easeOut" }}
+    >
+      <motion.rect
+        width="100%"
+        height="100%"
+        pathLength={10}
+        x={0}
+        y={0}
+        rx={"28px"}
+        ry={"28px"}
+        filter="blur(2px)"
+      />
+      <motion.rect
+        width="100%"
+        height="100%"
+        pathLength={10}
+        x={0}
+        y={0}
+        rx={"28px"}
+        ry={"28px"}
+        filter="blur(1px)"
+      />
+    </motion.svg>
   );
 };
