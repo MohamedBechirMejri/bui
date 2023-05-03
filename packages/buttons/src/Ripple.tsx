@@ -1,5 +1,40 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
+
+// Custom hook to create and remove ripples
+const useRipples = (color: string) => {
+  const [ripples, setRipples] = useState<React.ReactNode[]>([]);
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  // Callback ref to access the button element
+  const ref = useCallback(
+    (node: { getBoundingClientRect: () => { width: any; height: any } }) => {
+      if (node) {
+        // @ts-ignore
+        const { width, height } = node.getBoundingClientRect();
+        setWidth(width);
+        setHeight(height);
+      }
+    },
+    []
+  );
+
+  // Function to create a new ripple
+  const createRipple = () =>
+    setRipples([
+      ...ripples,
+      <RippleEffect width={width} height={height} color={color} />,
+    ]);
+
+  // Function to remove all ripples
+  const removeRipples = () => setRipples([]);
+
+  // Memoize the ripples array to avoid unnecessary re-rendering
+  const memoizedRipples = useMemo(() => ripples, [ripples]);
+
+  return { ref, memoizedRipples, createRipple, removeRipples };
+};
 
 export const Ripple = ({
   children,
@@ -9,26 +44,26 @@ export const Ripple = ({
   color?: string;
   children: React.ReactNode;
 }) => {
-  const ref = useRef<HTMLButtonElement>(null);
+  const timeoutRef = useRef<number | null>(null);
 
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [ripples, setRipples] = useState<React.ReactNode[]>([]);
+  // Use the custom hook to create and remove ripples
+  const { ref, memoizedRipples, createRipple, removeRipples } =
+    useRipples(color);
 
-  const handleMouseDown = () =>
-    setRipples([
-      ...ripples,
-      <RippleEffect width={width} height={height} color={color} />,
-    ]);
+  // Memoize the handleMouseDown function to avoid creating a new function on every render
+  const handleMouseDown = useCallback(() => {
+    createRipple();
 
-  useEffect(() => {
-    if (ref.current) {
-      // @ts-ignore
-      const { width, height } = ref.current.getBoundingClientRect();
-      setWidth(width);
-      setHeight(height);
+    // Clear the timeout if there is one already
+    if (timeoutRef.current) {
+      window.clearTimeout(timeoutRef.current);
     }
-  }, []);
+
+    // Remove all ripples after 3 seconds
+    timeoutRef.current = window.setTimeout(() => {
+      removeRipples();
+    }, 3000);
+  }, [createRipple, removeRipples]);
 
   return (
     <motion.button
@@ -52,7 +87,7 @@ export const Ripple = ({
       }}
       onMouseDown={handleMouseDown}
     >
-      {ripples}
+      {memoizedRipples}
       <motion.div
         ref={ref}
         style={{
