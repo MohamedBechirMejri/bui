@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 export const Wobble = ({
-  color = "#ac56f5",
+  color = "#ffffff",
   children,
   ...props
 }: {
@@ -14,10 +14,24 @@ export const Wobble = ({
   const handleMouseEnter = () => setIsMouseIn(true);
   const handleMouseLeave = () => setIsMouseIn(false);
 
+  // A function to determine the text color based on the background color
+  const getTextColor = (color: string) => {
+    // Convert the hex color to RGB values
+    const r = parseInt(color.slice(1, 3), 16);
+    const g = parseInt(color.slice(3, 5), 16);
+    const b = parseInt(color.slice(5, 7), 16);
+
+    // Calculate the luminance of the color
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+    // Return white or black depending on the luminance
+    return luminance > 0.5 ? "#000" : "#fff";
+  };
+
   return (
     <motion.button
       style={{
-        color: "#fff",
+        color: getTextColor(color), // Use the text color function here
         border: "none",
         padding: "1em 3em",
         fontSize: "1rem",
@@ -58,7 +72,7 @@ export const Wobble = ({
           />
         )}
       </AnimatePresence>
-      {children}
+      <motion.span>{children}</motion.span>
     </motion.button>
   );
 };
