@@ -11,19 +11,24 @@ export const Colors = ({
 }) => {
   const [colors, setColors] = useState<any[]>([]);
 
-  const handleMouseEnter = () => {
-    const colors = Array.from({ length: 3 }).map((_, i) => (
+  const generateColors = () => {
+    // create an array of 5 colors with random hues and one white color
+    return Array.from({ length: 5 }).map((_, i) => (
       <Color
         key={"color" + i}
-        color={`hsl(${Math.random() * 360}, 100%, 50%)`}
+        color={
+          i === 4
+            ? "hsl(0, 0%, 100%)"
+            : `hsl(${Math.random() * 360}, 100%, 50%)`
+        }
         i={i}
       />
     ));
-    setColors(c => [
-      ...c,
-      ...colors,
-      <Color key={"color" + 4} color={`hsl(0, 0%, 100%)`} i={4} />,
-    ]);
+  };
+
+  const handleMouseEnter = () => {
+    // add the generated colors to the state
+    setColors(c => [...c, ...generateColors()]);
   };
 
   return (
