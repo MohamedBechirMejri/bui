@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Colors = ({
   color = "#F5F5FF",
@@ -30,6 +30,17 @@ export const Colors = ({
     // add the generated colors to the state
     setColors(c => [...c, ...generateColors()]);
   };
+
+  useEffect(() => {
+    // set a timer to clear the colors state after 5 seconds
+    const timer = setTimeout(() => {
+      setColors([]);
+    }, 5000);
+    // clean up the timer when the component unmounts or the colors state changes
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [colors]);
 
   return (
     <motion.button
