@@ -33,7 +33,7 @@ export const Wobble = ({
       style={{
         color: getTextColor(color), // Use the text color function here
         border: "none",
-        padding: "1em 3em",
+        // padding: "1em 3em",
         fontSize: "1rem",
         fontWeight: "bold",
         cursor: "pointer",
@@ -44,9 +44,9 @@ export const Wobble = ({
         backgroundColor: color,
         borderRadius: "1em",
       }}
-      initial={{ scale: 1 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 1.05 }}
+      initial={{ scale: 1, padding: "1em 3em" }}
+      whileHover={{ scale: 1.1, padding: "1em 4em" }}
+      whileTap={{ scale: 1.05, padding: "1em 3em" }}
       transition={{ type: "spring", damping: 8, stiffness: 250 }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -67,8 +67,8 @@ export const Wobble = ({
               y: "-50%",
               filter: "blur(.25em)",
             }}
-            animate={{ scale: [0, 3], opacity: [1, 0] }}
-            transition={{ duration: 0.2 }}
+            animate={{ scale: [0, 4], opacity: [1, 0] }}
+            transition={{ duration: 0.3 }}
           />
         )}
       </AnimatePresence>
