@@ -55,13 +55,13 @@ export const Colors = ({
         overflow: "hidden",
         userSelect: "none",
         backgroundColor: color,
-        borderRadius: "1em",
+        borderRadius: "10em",
         padding: "1em 3em",
       }}
       initial={{ scale: 1 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{}}
-      // onMouseEnter={handleMouseEnter}
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 1.02 }}
+      transition={{ type: "spring", damping: 8, stiffness: 250 }}
       onMouseDown={handleMouseEnter}
       {...props}
     >
