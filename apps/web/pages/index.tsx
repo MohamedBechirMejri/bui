@@ -1,15 +1,14 @@
 import { useState } from "react";
 
 // import LoaderWrapper, { ComingUpNext } from "@bui/loaders";
-import { Ripple, MD3 } from "@bui/buttons";
+import { Wobble } from "@bui/buttons";
 
 export default function Web() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-[#111]">
-      {/* <MD3 onClick={() => setIsLoading(!isLoading)}>Generate Site</MD3> */}
-      {/* <Ripple onClick={() => setIsLoading(!isLoading)}>Submit</Ripple> */}
+      <Wobble onClick={() => setIsLoading(!isLoading)}>Submit</Wobble>
       {/* <LoaderWrapper isLoading={isLoading} loader={<ComingUpNext />} /> */}
     </div>
   );
