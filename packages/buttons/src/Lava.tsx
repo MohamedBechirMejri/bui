@@ -1,3 +1,8 @@
+/**
+ * TODO: fix animation - make the circles move in a more natural way
+ * TODO: fix styling bug - use styled-components
+ */
+
 import { motion } from "framer-motion";
 
 const colors = {
