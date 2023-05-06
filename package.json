@@ -18,7 +18,7 @@
     "turbo": "latest",
     "typescript": "^5.0.4"
   },
-  "packageManager": "pnpm@7.15.0",
+  "packageManager": "pnpm@8.4.0",
   "name": "bui",
   "dependencies": {
     "framer-motion": "^10.12.6",
