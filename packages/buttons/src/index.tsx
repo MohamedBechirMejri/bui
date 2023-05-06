@@ -6,3 +6,4 @@ export * from "./Ripple";
 export * from "./Wobble";
 export * from "./WobbleNoText";
 export * from "./Colors";
+export * from "./Lava";

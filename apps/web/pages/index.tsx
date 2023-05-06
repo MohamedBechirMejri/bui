@@ -1,14 +1,15 @@
 import { useState } from "react";
 
 // import LoaderWrapper, { ComingUpNext } from "@bui/loaders";
-import { Colors, Ripple, Wobble, WobbleNoText } from "@bui/buttons";
+import { Colors, Ripple, Wobble, WobbleNoText, Lava } from "@bui/buttons";
 
 export default function Web() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className="flex flex-col gap-8 items-center justify-center h-screen bg-[#111]">
-      <Colors onClick={() => setIsLoading(!isLoading)}>Submit</Colors>
+      {/* <Colors onClick={() => setIsLoading(!isLoading)}>Submit</Colors> */}
+      <Lava onClick={() => setIsLoading(!isLoading)}>Submit</Lava>
       {/* <WobbleNoText onClick={() => setIsLoading(!isLoading)}>
         Submit
       </WobbleNoText> */}
