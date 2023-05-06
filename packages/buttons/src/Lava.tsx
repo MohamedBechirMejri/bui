@@ -31,7 +31,7 @@ const circles = [
     animate: { x: [52, 56, 60], y: [4, -2, -32] },
   },
 ];
-export const Lava = ({ children }: { children: React.ReactNode }) => {
+export const Lava = ({ children, ...props }: { children: React.ReactNode }) => {
   return (
     <motion.button
       className="bui-lava"
@@ -62,6 +62,7 @@ export const Lava = ({ children }: { children: React.ReactNode }) => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 1 }}
       transition={{ type: "spring", damping: 8, stiffness: 250 }}
+      {...props}
     >
       <style>
         {`
