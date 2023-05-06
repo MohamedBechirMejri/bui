@@ -17,7 +17,7 @@ export default function Web() {
 
   return (
     <div className="flex flex-col gap-24 items-center justify-center min-h-screen bg-[#002]">
-      <Colors onClick={() => setIsLoading(!isLoading)}>Colors</Colors>
+      {/* <Colors onClick={() => setIsLoading(!isLoading)}>Colors</Colors>
       <Lava onClick={() => setIsLoading(!isLoading)}>Submit</Lava>
       <WobbleNoText onClick={() => setIsLoading(!isLoading)}>
         Wobble No Text
@@ -26,7 +26,7 @@ export default function Web() {
       <Ripple onClick={() => setIsLoading(!isLoading)}>Ripple</Ripple>
       <Glow onClick={() => setIsLoading(!isLoading)}>Glow</Glow>
       <Magic onClick={() => setIsLoading(!isLoading)}>Magic</Magic>
-      <MD3 onClick={() => setIsLoading(!isLoading)}>MD3</MD3>
+      <MD3 onClick={() => setIsLoading(!isLoading)}>MD3</MD3> */}
 
       {/* <LoaderWrapper isLoading={isLoading} loader={<ComingUpNext />} /> */}
     </div>
