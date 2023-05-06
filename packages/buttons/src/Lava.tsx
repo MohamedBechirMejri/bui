@@ -129,7 +129,7 @@ export const Lava = ({ children, ...props }: { children: React.ReactNode }) => {
               duration: 2,
               ease: "linear",
               repeat: Infinity,
-              repeatType: "loop",
+              repeatType: "reverse",
             }}
           />
         ))}
