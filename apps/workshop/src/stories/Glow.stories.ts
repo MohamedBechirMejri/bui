@@ -8,7 +8,7 @@ const meta = {
   // tags: ['autodocs'],
   argTypes: {
     text: { control: 'text' },
-    color: { control: 'color' },
+    color: { control: 'color', defaultValue: '#14013d' },
   },
 }
 
