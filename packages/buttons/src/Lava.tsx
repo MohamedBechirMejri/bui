@@ -1,6 +1,7 @@
 /**
  * TODO: fix animation - make the circles move in a more natural way
  * TODO: fix styling bug - use styled-components
+ * TODO: handle large width
  */
 
 import { motion } from "framer-motion";
@@ -36,7 +37,7 @@ const circles = [
     animate: { x: [52, 56, 60], y: [4, -2, -32] },
   },
 ];
-export const Lava = ({ children, ...props }: { children: React.ReactNode }) => {
+export const Lava = ({ text = 'Click me!', ...props } ) => {
   return (
     <motion.button
       className="bui-lava"
@@ -105,7 +106,7 @@ export const Lava = ({ children, ...props }: { children: React.ReactNode }) => {
         <span
           style={{ display: "inline-block", position: "relative", zIndex: 1 }}
         >
-          {children}
+          {text}
         </span>
         {Array.from({ length: 12 }).map((_, i) => (
           <motion.div
