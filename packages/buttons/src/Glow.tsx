@@ -43,7 +43,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 
-export const Glow = ({ text = "Submit", color = "#ffffff", ...props }) => {
+export const Glow = ({ text = "Submit", color= '#14013d', ...props }: {
+  text?: string;
+  color: string;
+}) => {
   const buttonRef = useRef(null);
   // @ts-ignore TODO: fix this
   const buttonWidth = buttonRef.current?.offsetWidth;
@@ -116,9 +119,9 @@ export const Glow = ({ text = "Submit", color = "#ffffff", ...props }) => {
         userSelect: "none",
         color,
       }}
-      initial={{ boxShadow: "0 0 .25rem 0px #14013d" }}
+      initial={{ boxShadow: `0 0 0rem .5px ${color}` }}
       whileHover={{
-        boxShadow: "0 0 0rem 2px #14013d",
+        boxShadow: `0 0 0rem 2px ${color}`,
         transition: { duration: 0.5 },
       }}
       onMouseMove={handleMouseMove}
@@ -151,9 +154,9 @@ export const Glow = ({ text = "Submit", color = "#ffffff", ...props }) => {
           zIndex: 2,
           borderRadius: "inherit",
         }}
-        initial={{ boxShadow: "0 0 0 0px #88888800 inset" }}
+        initial={{ boxShadow: `0 0 0 0px ${color}00 inset` }}
         whileTap={{
-          boxShadow: ["0 0 0 3px #88888800 inset", "0 0 0 0px #888888 inset"],
+          boxShadow: [`0 0 0 3px ${color}00 inset`, `0 0 0 0px ${color} inset`],
         }}
         transition={{ duration: 0.5 }}
       />
