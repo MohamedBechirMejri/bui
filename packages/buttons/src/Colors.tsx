@@ -3,25 +3,30 @@ import { useState, useEffect } from "react";
 
 export const Colors = ({
   color = "#F5F5FF",
-  children,
+  text = "Click me!",
+  numberOfColors = 5,
+  duration = 1,
   ...props
 }: {
-  color?: string;
-  children: React.ReactNode;
+    color?: string;
+    text?: string;
+    numberOfColors?: number;
+    duration?: number;
 }) => {
   const [colors, setColors] = useState<any[]>([]);
 
   const generateColors = () => {
     // create an array of 5 colors with random hues and one white color
-    return Array.from({ length: 5 }).map((_, i) => (
+    return Array.from({ length:  numberOfColors }).map((_, i) => (
       <Color
         key={"color" + i}
         color={
-          i === 4
-            ? "hsl(0, 0%, 100%)"
+          i ===  numberOfColors - 1
+            ? color
             : `hsl(${Math.random() * 360}, 100%, 50%)`
         }
         i={i}
+        duration={duration}
       />
     ));
   };
@@ -35,12 +40,12 @@ export const Colors = ({
     // set a timer to clear the colors state after 5 seconds
     const timer = setTimeout(() => {
       setColors([]);
-    }, 5000);
+    },  numberOfColors * duration * 1000);
     // clean up the timer when the component unmounts or the colors state changes
     return () => {
       clearTimeout(timer);
     };
-  }, [colors]);
+  }, [colors, duration, numberOfColors]);
 
   return (
     <motion.button
@@ -56,7 +61,7 @@ export const Colors = ({
         userSelect: "none",
         backgroundColor: color,
         borderRadius: "10em",
-        padding: "1em 3em",
+        padding: ".75em 3em",
       }}
       initial={{ scale: 1 }}
       whileHover={{ scale: 1.04 }}
@@ -67,13 +72,13 @@ export const Colors = ({
     >
       <AnimatePresence>{colors}</AnimatePresence>
       <motion.p style={{ position: "relative", zIndex: 1 }}>
-        {children}
+        {text}
       </motion.p>
     </motion.button>
   );
 };
 
-const Color = ({ color, i }: { color: string; i: number }) => {
+const Color = ({ color, i, duration }: { color: string; i: number, duration: number }) => {
   return (
     <motion.span
       style={{
@@ -87,8 +92,8 @@ const Color = ({ color, i }: { color: string; i: number }) => {
         x: "-50%",
         y: "-50%",
       }}
-      animate={{ scale: [0, 1] }}
-      transition={{ duration: 1, delay: i * 0.1 }}
+      animate={{ scale: [0, 1], opacity: [ 1, 0] }}
+      transition={{ duration, delay: i * 0.1 }}
     />
   );
 };
