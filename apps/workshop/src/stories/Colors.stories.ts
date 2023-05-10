@@ -5,7 +5,7 @@ import { Colors } from '@bui/buttons';
 const meta = {
   title: 'Buttons/Colors',
   component: Colors,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
   argTypes: {
     text: { control: 'text' },
     color: { control: 'color' },
