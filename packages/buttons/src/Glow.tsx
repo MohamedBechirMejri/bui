@@ -137,6 +137,7 @@ export const Glow = ({ text = "Submit", color = "#ffffff", ...props }) => {
           backdropFilter: "blur(.5rem)",
           alignItems: "center",
           justifyContent: "center",
+          borderRadius: "inherit",
         }}
       >
         {text}
