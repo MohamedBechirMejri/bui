@@ -121,7 +121,7 @@ export const Glow = ({ text = "Submit", color= '#14013d', ...props }: {
       }}
       initial={{ boxShadow: `0 0 0rem .5px ${color}` }}
       whileHover={{
-        boxShadow: `0 0 0rem 2px ${color}`,
+        boxShadow: `0 0 0rem 1px ${color}`,
         transition: { duration: 0.5 },
       }}
       onMouseMove={handleMouseMove}
