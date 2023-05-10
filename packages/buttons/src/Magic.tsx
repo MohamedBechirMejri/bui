@@ -13,16 +13,18 @@
  *
  */
 
+//! TODO: REMEAKE THIS
+
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 export const Magic = ({
-  children,
+  text= 'Generate Site',
   color = "#6D44F4",
   ...props
 }: {
+    text?: string;
   color?: string;
-  children: React.ReactNode;
 }) => {
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -46,7 +48,7 @@ export const Magic = ({
       const particles = useParticles(color, width, height);
       setParticles(particles);
     }
-  }, []);
+  }, [color]);
 
   return (
     <motion.button
@@ -127,7 +129,7 @@ export const Magic = ({
           WebkitTextFillColor: "#ffffff00",
         }}
       >
-        {children}
+        {text}
       </motion.p>
       {isHovering && (
         <motion.svg
@@ -257,11 +259,11 @@ const Particles = ({
       }}
       viewBox="0 0 1440 1024"
     >
-      {particles.map((particleProps: any, i: number) => (
-        <AnimatePresence>
-          {!isHovering ? null : <motion.circle key={i} {...particleProps} />}
-        </AnimatePresence>
-      ))}
+      <AnimatePresence> {particles.map((particleProps: any, i: number) => (
+
+          !isHovering ? null : <motion.circle key={i} {...particleProps} />
+
+      ))}   </AnimatePresence>
     </motion.svg>
   );
 };
