@@ -2,12 +2,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 export const Wobble = ({
+  text = "Click me!",
   color = "#F5F5FF",
-  children,
   ...props
 }: {
+  text?: string;
   color?: string;
-  children: React.ReactNode;
 }) => {
   const [isMouseIn, setIsMouseIn] = useState(false);
 
@@ -54,9 +54,9 @@ export const Wobble = ({
         backgroundColor: color,
         borderRadius: "1em",
       }}
-      initial={{ scale: 1, padding: "1em 3em" }}
-      whileHover={{ scale: 1.1, padding: "1em 4em" }}
-      whileTap={{ scale: 1.05, padding: "1em 3em" }}
+      initial={{ scale: 1, padding: ".5em 3em" }}
+      whileHover={{ scale: 1.1, padding: ".5em 4em" }}
+      whileTap={{ scale: 1.05, padding: ".5em 3em" }}
       transition={{ type: "spring", damping: 8, stiffness: 250 }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -82,7 +82,7 @@ export const Wobble = ({
           />
         )}
       </AnimatePresence>
-      <motion.p>{children}</motion.p>
+      <motion.p>{text}</motion.p>
     </motion.button>
   );
 };
