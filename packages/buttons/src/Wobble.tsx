@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export const Wobble = ({
   text = "Click me!",
-  color = "#F5F5FF",
+  color = "#049488",
   ...props
 }: {
   text?: string;
