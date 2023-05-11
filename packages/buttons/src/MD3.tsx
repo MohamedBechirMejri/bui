@@ -1,47 +1,24 @@
-/**
- * MD3 Button
- *
- * @param {string} color - The color of the button
- * @param {any} children - The text to display on the button
- * @param {any} props - Any other props to pass to the button
- * @returns {JSX.Element} - The MD3 button
- * @example
- *
- * import { MD3 } from "@bui/buttons";
- *
- * export default function Web() {
- *   return (
- *    <div
- *    style={{
- *      display: "flex",
- *      flexDirection: "column",
- *      alignItems: "center",
- *      justifyContent: "center",
- *      height: "100vh",
- *     }}
- *   >
- *    <MD3>Submit</MD3>
- *   </div>
- *  );
- * }
- *
- * @todo
- * - [ ] Add light version
- */
+
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const MD3 = ({
-  color = "#297297",
-  children,
+  color = "#f5d4a6",
+  text = 'Click me!',
   ...props
 }: {
-  color?: string;
-  children: React.ReactNode;
+    color?: string;
+    text?: string;
 }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isMouseDown, setIsMouseDown] = useState(false);
+  const [colors, setColors] = useState({
+    backgroundColor: color + "55",
+    hoverColor: color + "77",
+    clickColor: color + "99",
+    textColor: color,
+  })
 
   const handleMouseMove = (e: any) => {
     const mouseX = e.pageX - e.currentTarget.offsetLeft;
@@ -53,13 +30,33 @@ export const MD3 = ({
     setMousePosition({ x, y });
   };
 
-  const handleMouseDown = () => setIsMouseDown(true);
+  const handleMouseDown = () => {
+    setIsMouseDown(true);
+
+    setTimeout(() => {
+      setIsMouseDown(false);
+    }
+    , 200);
+  }
   const handleMouseUp = () => setIsMouseDown(false);
+
+  useEffect(() => {
+
+    // convert 3 digit hex to 6 digit hex
+    const hex6 = color.length === 4 ? color.split('').map(x => x + x).slice(1, 8).join() : color;
+
+    setColors({
+      backgroundColor: hex6 + "55",
+      hoverColor: hex6 + "77",
+      clickColor: hex6 + "99",
+      textColor: hex6,
+    })
+  }, [color])
 
   return (
     <motion.button
       style={{
-        color,
+        color: colors.textColor,
         border: "none",
         padding: "1em 2em",
         fontSize: "1rem",
@@ -70,8 +67,8 @@ export const MD3 = ({
         overflow: "hidden",
         userSelect: "none",
       }}
-      initial={{ backgroundColor: color + "55", borderRadius: "1em" }}
-      whileHover={{ backgroundColor: color + "77" }}
+      initial={{ backgroundColor: colors.backgroundColor , borderRadius: "1em" }}
+      whileHover={{ backgroundColor: colors.hoverColor }}
       whileTap={{ borderRadius: "1.5em" }}
       transition={{ duration: 0.4 }}
       onMouseMove={handleMouseMove}
@@ -89,7 +86,7 @@ export const MD3 = ({
               width: "5em",
               height: "5em",
               borderRadius: "9000vw",
-              backgroundColor: "#88888855",
+              backgroundColor: colors.clickColor,
               x: "-50%",
               y: "-50%",
               filter: "blur(.25em)",
@@ -101,7 +98,7 @@ export const MD3 = ({
           />
         )}
       </AnimatePresence>
-      {children}
+      {text}
     </motion.button>
   );
 };
