@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@bui/buttons": "^0.0.0",
-    "@bui/loaders": "^0.0.0",
+    "@bui/buttons": "workspace:*",
+    "@bui/loaders": "workspace:*",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
