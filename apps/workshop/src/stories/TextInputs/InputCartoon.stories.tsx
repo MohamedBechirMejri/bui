@@ -14,7 +14,7 @@ const meta = {
     },
     placeholder: { control: { type: "text" } },
     height: { control: { type: "text" }, defaultValue: "4rem" },
-    width: { control: { type: "text" }, defaultValue: "20rem" },
+    width: { control: { type: "text" }, defaultValue: "min(100%,20rem)" },
   },
 };
 
@@ -24,7 +24,7 @@ export const Default = ({
   inputType = "email",
   placeholder = "Enter Email",
   height = "4rem",
-  width = "20rem",
+  width = "min(100%,20rem)",
 }: {
   inputType?:
     | "text"

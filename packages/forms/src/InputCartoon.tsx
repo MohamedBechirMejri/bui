@@ -6,7 +6,7 @@ export const InputCartoon = ({
   setValue,
   inputType = "text",
   placeholder = "Enter Email",
-  width = "20rem",
+  width = "auto",
   height = "4rem",
   ...props
 }: {
