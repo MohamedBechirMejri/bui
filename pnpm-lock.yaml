@@ -53,9 +53,6 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-      ui:
-        specifier: workspace:*
-        version: link:../../packages/ui
     devDependencies:
       '@types/node':
         specifier: ^17.0.12
@@ -78,12 +75,6 @@ importers:
 
   apps/web:
     dependencies:
-      '@bui/buttons':
-        specifier: workspace:*
-        version: link:../../packages/buttons
-      '@bui/loaders':
-        specifier: workspace:*
-        version: link:../../packages/loaders
       next:
         specifier: latest
         version: 13.4.2(react-dom@18.2.0)(react@18.2.0)
@@ -93,9 +84,6 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-      ui:
-        specifier: workspace:*
-        version: link:../../packages/ui
     devDependencies:
       '@types/node':
         specifier: ^17.0.12
@@ -274,30 +262,6 @@ importers:
         version: link:../tsconfig
 
   packages/tsconfig: {}
-
-  packages/ui:
-    devDependencies:
-      '@types/react':
-        specifier: ^17.0.37
-        version: 17.0.58
-      '@types/react-dom':
-        specifier: ^17.0.11
-        version: 17.0.19
-      eslint:
-        specifier: ^7.32.0
-        version: 7.32.0
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      react:
-        specifier: ^17.0.2
-        version: 17.0.2
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
-      typescript:
-        specifier: ^4.5.2
-        version: 4.9.5
 
 packages:
 
@@ -3649,12 +3613,6 @@ packages:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
     dev: true
 
-  /@types/react-dom@17.0.19:
-    resolution: {integrity: sha512-PiYG40pnQRdPHnlf7tZnp0aQ6q9tspYr72vD61saO6zFCybLfMqwUCN0va1/P+86DXn18ZWeW30Bk7xlC5eEAQ==}
-    dependencies:
-      '@types/react': 17.0.58
-    dev: true
-
   /@types/react-dom@18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
     dependencies:
@@ -3665,14 +3623,6 @@ packages:
     resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
     dependencies:
       '@types/react': 18.2.6
-    dev: true
-
-  /@types/react@17.0.58:
-    resolution: {integrity: sha512-c1GzVY97P0fGxwGxhYq989j4XwlcHQoto6wQISOC2v6wm3h0PORRWJFHlkRjfGsiG3y1609WdQ+J+tKxvrEd6A==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.3
-      csstype: 3.1.2
     dev: true
 
   /@types/react@18.0.38:
@@ -8374,14 +8324,6 @@ packages:
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  /react@17.0.2:
-    resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
     dev: true
 
   /react@18.2.0:
