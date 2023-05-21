@@ -6,6 +6,8 @@ export const InputCartoon = ({
   setValue,
   inputType = "text",
   placeholder = "Enter Email",
+  width = "20rem",
+  height = "4rem",
   ...props
 }: {
   value?: string;
@@ -19,12 +21,14 @@ export const InputCartoon = ({
     | "url"
     | "search";
   placeholder?: string;
+  width?: string;
+  height?: string;
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <div
-      style={{ width: "20rem", height: "4rem", position: "relative" }}
+      style={{ width, height, position: "relative" }}
       onClick={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
     >
@@ -67,9 +71,10 @@ export const InputCartoon = ({
                 fontWeight: "inherit",
                 color: "#757575",
                 position: "absolute",
-                top: "33%",
-                left: "5%",
+                top: "50%",
+                left: "1rem",
                 userSelect: "none",
+                y: "-50%",
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -87,16 +92,16 @@ export const InputCartoon = ({
             fontWeight: 900,
             color: "black",
             position: "absolute",
-            top: "24%",
-            left: "16.6%",
+            top: "50%",
+            left: "1rem",
             userSelect: "none",
           }}
-          initial={{ opacity: 0, y: "-10%", x: "-50%" }}
+          initial={{ opacity: 0, y: "-140%" }}
           animate={{
             opacity: isFocused ? 1 : 0,
-            y: isFocused ? "-50%" : "-10%",
+            y: isFocused ? "-180%" : "-140%",
           }}
-          transition={{ duration: 0.2, delay: isFocused ? 0.4 : 0 }}
+          transition={{ duration: 0.2, delay: isFocused ? 0.1 : 0 }}
         >
           {placeholder}
         </motion.span>

@@ -10,8 +10,11 @@ const meta = {
     inputType: {
       control: { type: "select" },
       options: ["text", "email", "password", "number", "tel", "url", "search"],
+      defaultValue: "email",
     },
     placeholder: { control: { type: "text" } },
+    height: { control: { type: "text" }, defaultValue: "4rem" },
+    width: { control: { type: "text" }, defaultValue: "20rem" },
   },
 };
 
@@ -20,6 +23,8 @@ export default meta;
 export const Default = ({
   inputType = "email",
   placeholder = "Enter Email",
+  height = "4rem",
+  width = "20rem",
 }: {
   inputType?:
     | "text"
@@ -30,6 +35,8 @@ export const Default = ({
     | "url"
     | "search";
   placeholder?: string;
+  height?: string;
+  width?: string;
 }) => {
   const [value, setValue] = useState("");
   return (
@@ -38,6 +45,8 @@ export const Default = ({
       setValue={setValue}
       inputType={inputType}
       placeholder={placeholder}
+      height={height}
+      width={width}
     />
   );
 };
