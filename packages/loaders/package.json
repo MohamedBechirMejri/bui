@@ -2,7 +2,7 @@
   "name": "@bui/loaders",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "dist/index.cjs",
+  "main": "dist/index.mjs",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
