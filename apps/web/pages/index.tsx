@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 // import LoaderWrapper, { ComingUpNext } from "@bui/loaders";
-import {
-  Colors,
-  Ripple,
-  Wobble,
-  WobbleNoText,
-  Lava,
-  Glow,
-  Magic,
-  MD3,
-} from "@bui/buttons";
+// import {
+//   Colors,
+//   Ripple,
+//   Wobble,
+//   WobbleNoText,
+//   Lava,
+//   Glow,
+//   Magic,
+//   MD3,
+// } from "@bui/buttons";
 
 export default function Web() {
   const [isLoading, setIsLoading] = useState(false);
