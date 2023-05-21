@@ -1,0 +1,31 @@
+{
+  "name": "@bui/forms",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist/index.cjs",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "check-types": "tsc --noEmit"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./dist",
+    "./styles.css": "./dist/index.css"
+  },
+  "devDependencies": {
+    "eslint-config-custom": "workspace:0.0.0",
+    "tsconfig": "workspace:0.0.0"
+  },
+  "dependencies": {
+    "framer-motion": "^10.12.6",
+    "react": "^18.2.0"
+  }
+}

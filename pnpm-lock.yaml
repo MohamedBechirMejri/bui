@@ -130,6 +130,9 @@ importers:
       '@bui/buttons':
         specifier: workspace:*
         version: link:../../packages/buttons
+      '@bui/forms':
+        specifier: workspace:*
+        version: link:../../packages/forms
       '@bui/loaders':
         specifier: workspace:*
         version: link:../../packages/loaders
@@ -237,6 +240,22 @@ importers:
       eslint-plugin-react:
         specifier: 7.28.0
         version: 7.28.0(eslint@8.40.0)
+
+  packages/forms:
+    dependencies:
+      framer-motion:
+        specifier: ^10.12.6
+        version: 10.12.10(react@18.2.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+    devDependencies:
+      eslint-config-custom:
+        specifier: workspace:0.0.0
+        version: link:../eslint-config-custom
+      tsconfig:
+        specifier: workspace:0.0.0
+        version: link:../tsconfig
 
   packages/loaders:
     dependencies:
@@ -5898,7 +5917,7 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
-      tslib: 2.5.0
+      tslib: 2.5.1
     optionalDependencies:
       '@emotion/is-prop-valid': 0.8.8
     dev: false
