@@ -15,6 +15,7 @@ const meta = {
     placeholder: { control: { type: "text" } },
     height: { control: { type: "text" }, defaultValue: "4rem" },
     width: { control: { type: "text" }, defaultValue: "min(100%,20rem)" },
+    color: { control: { type: "color" }, defaultValue: "#e11d48" },
   },
 };
 
@@ -25,11 +26,13 @@ export const Default = ({
   placeholder = "Enter Email",
   height = "4rem",
   width = "min(100%,20rem)",
+  color = "#e11d48",
 }: {
   type?: "text" | "email" | "password" | "number" | "tel" | "url" | "search";
   placeholder?: string;
   height?: string;
   width?: string;
+  color?: string;
 }) => {
   const [value, setValue] = useState("");
   return (
@@ -40,6 +43,7 @@ export const Default = ({
       placeholder={placeholder}
       height={height}
       width={width}
+      color={color}
     />
   );
 };

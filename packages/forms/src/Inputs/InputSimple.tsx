@@ -8,7 +8,7 @@ export const InputSimple = ({
   placeholder = "Enter Email",
   width = "auto",
   height = "4rem",
-  color = "#e11d48",
+  color = "#000000",
   ...props
 }: {
   value?: string;
@@ -45,9 +45,11 @@ export const InputSimple = ({
           color: isFocused ? color : "#888",
           borderRadius: "1.25rem",
           backgroundColor: isFocused ? color + 11 : `#ffffff`,
+          fontWeight: 600,
+          fontFamily: "Nunito, sans-serif",
         }}
         animate={{
-          border: isFocused ? `2px solid ${color}` : `2px solid #888`,
+          border: isFocused ? `3px solid ${color}` : `3px solid #888`,
           boxShadow: isFocused ? `0 0 0 1px ${color}` : `0 0 0 0px ${color}00`,
         }}
       >
