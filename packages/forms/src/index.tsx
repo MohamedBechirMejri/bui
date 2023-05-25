@@ -1,2 +1,3 @@
 // components
-export * from "./InputCartoon";
+export * from "./Inputs/InputCartoon";
+export * from "./Inputs/InputZen";
