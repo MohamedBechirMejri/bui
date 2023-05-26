@@ -8,7 +8,7 @@ export const InputCRT = ({
   placeholder = "Enter Text",
   width = "auto",
   height = "6rem",
-  color = "#0099ff",
+  color = "#00ff00",
   ...props
 }: {
   value?: string;

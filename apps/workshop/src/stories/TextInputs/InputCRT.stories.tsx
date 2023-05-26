@@ -15,7 +15,7 @@ const meta = {
     placeholder: { control: { type: "text" } },
     height: { control: { type: "text" }, defaultValue: "4rem" },
     width: { control: { type: "text" }, defaultValue: "min(100%,20rem)" },
-    color: { control: { type: "color" }, defaultValue: "#0099ff" },
+    color: { control: { type: "color" }, defaultValue: "#00ff00" },
   },
 };
 
@@ -26,7 +26,7 @@ export const Default = ({
   placeholder = "Enter Text",
   height = "4rem",
   width = "min(100%,20rem)",
-  color = "#0099ff",
+  color = "#00ff00",
 }: {
   type?: "text" | "email" | "password" | "number" | "tel" | "url" | "search";
   placeholder?: string;
