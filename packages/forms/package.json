@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "main": "dist/index.mjs",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -13,12 +13,8 @@
     "dev": "tsup --watch",
     "check-types": "tsc --noEmit"
   },
-  "sideEffects": [
-    "**/*.css"
-  ],
   "exports": {
-    ".": "./dist",
-    "./styles.css": "./dist/index.css"
+    ".": "./dist"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:0.0.0",
