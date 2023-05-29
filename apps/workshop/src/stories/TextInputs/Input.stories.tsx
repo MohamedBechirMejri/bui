@@ -1,9 +1,9 @@
-import { InputZen } from "@bui/forms";
+import { Input } from "@bui/forms";
 import { useState } from "react";
 
 const meta = {
-  title: "Inputs/InputZen",
-  component: InputZen,
+  title: "Inputs/Input",
+  component: Input,
   // tags: ['autodocs'],
   argTypes: {
     value: { control: { type: "text" } },
@@ -36,7 +36,7 @@ export const Default = ({
 }) => {
   const [value, setValue] = useState("");
   return (
-    <InputZen
+    <Input
       value={value}
       setValue={setValue}
       type={type}
