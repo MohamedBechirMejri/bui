@@ -1,0 +1,28 @@
+{
+  "name": "@bui/libs",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "check-types": "tsc --noEmit"
+  },
+  "exports": {
+    ".": "./dist"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.3",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "color": "^4.2.3"
+  }
+}
