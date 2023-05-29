@@ -21,6 +21,7 @@
     "tsconfig": "workspace:0.0.0"
   },
   "dependencies": {
+    "@bui/libs": "workspace:^",
     "framer-motion": "^10.12.6",
     "react": "^18.2.0"
   }

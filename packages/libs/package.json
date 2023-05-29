@@ -12,7 +12,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "test": "vitest"
   },
   "exports": {
     ".": "./dist"
@@ -20,7 +21,8 @@
   "devDependencies": {
     "@types/color": "^3.0.3",
     "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*"
+    "tsconfig": "workspace:*",
+    "vitest": "^0.31.1"
   },
   "dependencies": {
     "color": "^4.2.3"

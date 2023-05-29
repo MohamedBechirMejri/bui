@@ -1,7 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { parseColor } from "@bui/libs";
 
 export const Input = () => {
+  const c = parseColor("#001");
+
+  console.log(c);
+
   return (
     <motion.div style={{}}>
       <style>
