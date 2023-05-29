@@ -1,3 +1,3 @@
-import color from "color";
+import Color from "color";
 
-export const parseColor = (c: string) => color(c).rgb().hex();
+export const parseColor = (color: string) => Color(color).rgb().hex();
