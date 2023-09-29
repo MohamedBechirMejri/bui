@@ -11,8 +11,8 @@ npx create-turbo@latest
 ```       
    
 ## What's inside?    
-       
-This Turborepo includes the following packages/apps:   
+         
+This Turborepo includes the following pac 
    
 ### Apps and Packages   
  
