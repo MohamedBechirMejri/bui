@@ -15,7 +15,7 @@ npx create-turbo@latest
 This Turborepo includes the following pac 
    
 ### Apps and Packages   
-    
+     
 - `docs`: a [Next.js](https://nextjs.org/) app  
 - `web`: another [Next.js](https://nextjs.org/) app
 - `ui`: a stub React component library shared by both `web` and `docs` applications 
